@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>Please login to continue</p>
+
+    <input matInput placeholder="username" formControlName="username" required>
+    <p *ngIf="isFieldInvalid('username')">
+        Please inform your user name
+    </p>
+
+    <input matInput type="password" placeholder="Password" formControlName="password" required>
+    <p *ngIf="isFieldInvalid('username')">
+        Please inform your password
+    </p>
+    <button>Login</button>
+</form>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/Services/auth.service';
 import { ProductsService } from 'src/app/Services/products.service';
 import { SearchProductService } from 'src/app/Services/search-product.service';
 
@@ -12,7 +14,11 @@ export class ProductsComponent implements OnInit {
   products
   subscriber
   subscriberByID
-  constructor(private productSercice:ProductsService, private searchProduct:SearchProductService){
+  // authorization
+  isLoggedIn: Observable<boolean>;
+
+  constructor(private productSercice:ProductsService,
+     private searchProduct:SearchProductService,private authService: AuthService){
     this.searchProduct.searchEvent.subscribe(response=>{
       this.products=response
     },error=>console.log(error))
@@ -21,9 +27,12 @@ export class ProductsComponent implements OnInit {
     // this.products=this.productSercice.getProducts();
     this.getProducts();
     // this.products=this.searchProduct.getSelectedProducts();
-   
+    this.isLoggedIn = this.authService.isLoggedIn;
     console.log("start")
 
+    }
+    onLogout(){
+      this.authService.logout();                      // {3}
     }
     getProducts(){
       this.subscriber=this.productSercice.getProducts().subscribe(
