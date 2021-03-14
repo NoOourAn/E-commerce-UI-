@@ -24,6 +24,7 @@ export class RegistrationComponent implements OnInit {
     });
 }
 submit(){
+  console.log(this.userForm)
   if(this.userForm.valid){
     console.log(this.userForm.value)
      this.jwtService.register(this.userForm.value)
@@ -40,7 +41,8 @@ submit(){
     // alert('User form is valid!!')
 
   } else {
-    alert('User form is not valid!!')
+    // alert('User form is not valid!!')
+    console.log(this.userForm)
   }
 }
 }

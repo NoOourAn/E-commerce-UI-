@@ -25,13 +25,7 @@ export class AuthService {
     private router: Router,private httpClient: HttpClient, private jwtService:JwtService
   ) {}
 
-  // login(user: User){
-
-  //   if (user.username !== '' && user.password !== '' ) { // {3}
-  //     this.loggedIn.next(true);
-  //     this.router.navigate(['/products']);
-  //   }
-  // }
+ 
 
   login(){
 
@@ -52,10 +46,6 @@ export class AuthService {
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
-//   logout() {       
-//     // {4}
-//     this.jwtService.logout();
-// this.loggedIn.next(false);
-// this.router.navigate(['/login']);
+
 }
  

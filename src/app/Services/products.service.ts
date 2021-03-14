@@ -14,7 +14,6 @@ export class ProductsService {
   getProducts(){
     // return this.products;
     return this.myClient.get("https://jsonplaceholder.typicode.com/posts/",);
-   
   }
   getProductsByID(id){
     // return this.products;
