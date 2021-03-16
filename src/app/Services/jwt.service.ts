@@ -19,7 +19,7 @@ export class JwtService {
    
   register(user) {
 
- 
+console.log(user); 
   return this.httpClient.post('http://localhost:3000/api/users/reg', user)
   }
   
