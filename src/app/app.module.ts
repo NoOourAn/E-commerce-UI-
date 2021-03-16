@@ -22,7 +22,6 @@ import { CreateProductComponent } from 'src/app/components/dashboard/create-prod
 import { ProfileComponent } from './components/profile/profile.component';
 import { receiptComponent } from './components/orders page/receipt/receipt.component';
 import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
-import { shoppingListService } from 'src/app/components/home/2ndsectionShopping/shopping-list.service';
 import { RatingEventsComponent } from 'src/app/components/home/2ndsectionShopping/rating-events/rating-events.component';
 import { BlogComponent } from 'src/app/components/shared/header/blog/blog.component';
 import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
@@ -105,7 +104,7 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
   providers: [
     ProductsService,
     SearchProductService,
-    shoppingListService,JwtService,AuthService,CartService],
+    JwtService,AuthService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

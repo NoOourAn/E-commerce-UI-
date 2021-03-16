@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {productDetails} from 'src/app/models/shopping-list.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +8,7 @@ export class CartService {
 
   constructor() { }
 
-  addToCArt(productDetails:productDetails){
+  addToCArt(productDetails){
  
     this.cart.push(productDetails);
   }
