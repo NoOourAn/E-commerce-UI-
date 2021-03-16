@@ -3,8 +3,8 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  templateUrl: './orders.page.component.html',
+  styleUrls: ['./orders.page.component.css']
 })
 
 export class OrdersComponent implements OnInit {

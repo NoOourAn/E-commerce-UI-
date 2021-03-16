@@ -12,6 +12,7 @@
                 <label data-error="wrong" data-success="right" for="4defaultForm-pass2">Title</label>
                 <small id="4materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
       At least 8 characters and 1 digit
+
     </small>
                 <input type="text" id="4defaultForm-pass2" class="form-control">
                 <label data-error="wrong" data-success="right" for="4defaultForm-pass2">Price</label>
@@ -25,7 +26,8 @@
     </small>
                 <label class="form-label" for="customFile">Choose product image...</label>
                 <input type="file" (change)="onFileSelected($event)" class="form-control" id="customFile" />
-                <button type="button" (click)="onUpoad();" class="btnSubmit">upload</button>
+                <!-- <button type="button" (click)="onUpoad();" class="btnSubmit">upload</button> -->
+                <button type="button" class="btnSubmit">upload</button>
             </div>
         </div>
         <button type="button" (click)="submit();" class="btnSubmit">Submit</button>

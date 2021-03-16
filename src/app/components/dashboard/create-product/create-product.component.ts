@@ -15,10 +15,10 @@ export class CreateProductComponent implements OnInit {
 selectedFile: File= null;
 
   createproductform
-  constructor(private myClient:HttpClient,private formBuilder: FormBuilder) {}
+  // constructor(private myClient:HttpClient,private formBuilder: FormBuilder) {}
  
   addProduct(product){
-    return this.myClient.post(`https://jsonplaceholder.typicode.com/posts/`,product);
+    // return this.myClient.post(`https://jsonplaceholder.typicode.com/posts/`,product);
   }
   onFileSelected(event)
   {
@@ -33,24 +33,24 @@ selectedFile: File= null;
   submit(){
     
   }
-  onUpoad(){
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post('', fd);
-    reportProgress: true,
-    observe: 'events'
-  })
-    .subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress){
-        console.log('Upload Progress:' + Math.round(event.loaded / event.total * 100)   + '%')
-      }
-      else if 
-      (event.type === HttpEventType.Response)
-      {
-console.log(event);
-      }
-      console.log(event);
-    }
-    });
-  }
+//   onUpoad(){
+//     const fd = new FormData();
+//     fd.append('image', this.selectedFile, this.selectedFile.name);
+//     this.http.post('', fd);
+//     reportProgress: true,
+//     observe: 'events'
+//   })
+//     .subscribe(event => {
+//       if (event.type === HttpEventType.UploadProgress){
+//         console.log('Upload Progress:' + Math.round(event.loaded / event.total * 100)   + '%')
+//       }
+//       else if 
+//       (event.type === HttpEventType.Response)
+//       {
+// console.log(event);
+//       }
+//       console.log(event);
+//     }
+//     });
+//   }
 }
