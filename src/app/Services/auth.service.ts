@@ -7,7 +7,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { JwtService } from './jwt.service';
 
 
-
 @Injectable(
   {
     providedIn: 'root',
@@ -32,7 +31,7 @@ export class AuthService {
     // this.jwtService.login(user.username,user.password);
     if (this.jwtService.loggedIn ) { // {3}
       this.loggedIn.next(true);
-      this.router.navigate(['/products']);
+      this.router.navigate(['/home']);
     }
   }
 

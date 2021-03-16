@@ -1,38 +1,44 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { RegistrationComponent } from 'src/app/components/shared/header/registration/registration.component';
 import { AuthGuard } from './guards/auth.guard';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import {OrderPageComponent} from 'src/app/components/order-page/order-page.component';
-import {SearchComponent } from 'src/app/components/search/search.component';
-import { ShoppingListComponent} from 'src/app/components/shopping-list/shopping-list.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { ReadMoreComponent } from './components/read-more/read-more.component';
-import { DetailsComponent } from './details/details.component';
+import { SignInComponent } from 'src/app/components/shared/header/sign-in/sign-in.component';
+import {receiptComponent} from 'src/app/components/orders page/receipt/receipt.component';
+import { SearchBarComponent } from 'src/app/components/search/search-bar/search-bar.component';
+import { ShoppingListComponent } from 'src/app/components/home/2ndsectionshopping/shopping-list.component';
+import { BlogComponent } from 'src/app/components/shared/header/blog/blog.component';
+import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
+import { OrdersComponent } from 'src/app/components/orders page/orders.page.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { CreateProductComponent } from './create-product/create-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { BuyNowComponent } from './components/buy-now/buy-now.component';
+import { CreateProductComponent } from 'src/app/components/dashboard/create-product/create-product.component';
+import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
+import { BuyNowComponent } from 'src/app/components/home/1stsectionSlider/buy-nowBtn/buy-now.component';
+import { AboutUsComponent } from 'src/app/components/shared/header/about-us/about-us.component';
+import { SearchresultComponent } from 'src/app/components/search/search-bar/searchresult/searchresult.component';
+import { CartComponent } from 'src/app/components/shared/header/cart/cart.component';
+
+
 const routes = [
   {path:'', component: HomeComponent },
   {path:'products',component:ProductsComponent,canActivate: [AuthGuard]},
   {path:'login',component:SignInComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'signin', component:SignInComponent},
-  {path:'receipt', component:OrderPageComponent },
-  { path:'search', component:SearchComponent },
+  {path:'receipt', component:receiptComponent },
+  { path:'search', component:SearchBarComponent },
   { path: 'home', component: ShoppingListComponent},
   { path: 'blog', component: BlogComponent },
   { path: 'readmore', component: ReadMoreComponent },
-  { path: 'details', component: DetailsComponent },
+  { path: 'orders', component: OrdersComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'editproduct', component: EditProductComponent },
   { path: 'createproduct', component: CreateProductComponent },
   { path: 'buynow', component: BuyNowComponent },
+  {path: 'searchresult', component: SearchresultComponent },
+  {path: 'aboutus', component: AboutUsComponent }
 ]
 
 @NgModule({
@@ -40,7 +46,8 @@ const routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
-    
-  ]
+  ],
+  exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

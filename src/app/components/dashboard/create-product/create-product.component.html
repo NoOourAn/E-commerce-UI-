@@ -1,0 +1,33 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<form [formGroup]="createproductform" (ngSubmit)="submit()" class="text-center border border-light p-5">
+    <div class="form-content">
+        <div class="form-row">
+            <h3>Create New Product</h3>
+            <div class="md-form md-outline">
+                <input type="text" id="4defaultForm-pass2" class="form-control">
+                <label data-error="wrong" data-success="right" for="4defaultForm-pass2">Title</label>
+                <small id="4materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      At least 8 characters and 1 digit
+    </small>
+                <input type="text" id="4defaultForm-pass2" class="form-control">
+                <label data-error="wrong" data-success="right" for="4defaultForm-pass2">Price</label>
+                <small id="4materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      At least 8 characters and 1 digit
+    </small>
+                <input type="text" id="4defaultForm-pass2" class="form-control">
+                <label data-error="wrong" data-success="right" for="4defaultForm-pass2">Details</label>
+                <small id="4materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      At least 8 characters and 1 digit
+    </small>
+                <label class="form-label" for="customFile">Choose product image...</label>
+                <input type="file" (change)="onFileSelected($event)" class="form-control" id="customFile" />
+                <button type="button" (click)="onUpoad();" class="btnSubmit">upload</button>
+            </div>
+        </div>
+        <button type="button" (click)="submit();" class="btnSubmit">Submit</button>
+    </div>
+</form>
