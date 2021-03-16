@@ -1,1 +1,30 @@
-<p>admin-display works!</p>
+<div class="main-block">
+    <table class="table table-borderless table-striped table-earning">
+      <thead style="background-color: #2794B5; color: white;">
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Number In Stock</th>
+      <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.numberInStock }}</td>
+        <td>{{ product.price }}</td>
+      </tr>
+  
+      <ng-template #notExist>
+        <td> ----- </td>
+      </ng-template>    
+      
+      </tbody>
+      </table>
+</div>
