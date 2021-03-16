@@ -22,7 +22,6 @@ import { CreateProductComponent } from 'src/app/components/dashboard/create-prod
 import { ProfileComponent } from './components/profile/profile.component';
 import { receiptComponent } from './components/orders page/receipt/receipt.component';
 import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
-import { shoppingListService } from 'src/app/components/home/2ndsectionShopping/shopping-list.service';
 import { RatingEventsComponent } from 'src/app/components/home/2ndsectionShopping/rating-events/rating-events.component';
 import { BlogComponent } from 'src/app/components/shared/header/blog/blog.component';
 import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
@@ -37,6 +36,7 @@ import { SearchresultComponent } from 'src/app/components/search/search-bar/sear
 import { OrdereditemComponent } from './components/orders page/ordereditem/ordereditem.component';
 import { CartComponent } from 'src/app/components/shared/header/cart/cart.component';
 import { CartService } from './services/cart.service';
+
  //import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -99,7 +99,7 @@ import { CartService } from './services/cart.service';
   providers: [
     ProductsService,
     SearchProductService,
-    shoppingListService,JwtService,AuthService,CartService],
+    JwtService,AuthService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

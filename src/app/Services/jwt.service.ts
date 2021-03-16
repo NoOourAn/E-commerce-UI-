@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { User } from '../models/user';
 
 @Injectable({
 providedIn: 'root'
@@ -18,7 +17,7 @@ export class JwtService {
  
   }
    
-  register(user:User) {
+  register(user) {
 
  
   return this.httpClient.post('http://localhost:3000/api/users/reg', user)
