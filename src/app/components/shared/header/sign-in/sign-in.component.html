@@ -15,13 +15,14 @@
             <p>
                 <a href="" target="_blank">See the last newsletter</a>
             </p>
-            <input matInput placeholder="username" id="defaultSubscriptionFormPassword" class="form-control mb-4" formControlName="E-mail" required>
-            <p *ngIf="isFieldInvalid('email')">
-                Please inform your E-mail
+            <input matInput type="text" placeholder="username" class="form-control mb-4" formControlName="username" required>
+            <p *ngIf="isFieldInvalid('username')">
+                Please inform your username
+
             </p>
 
-            <input matInput type="password" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="Password" formControlName="password" required>
-            <p *ngIf="isFieldInvalid('username')">
+            <input matInput type="password" class="form-control mb-4" placeholder="password" formControlName="password" required>
+            <p *ngIf="isFieldInvalid('password')">
                 Please inform your password
             </p>
 
