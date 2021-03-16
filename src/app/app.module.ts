@@ -37,6 +37,9 @@ import { SearchresultComponent } from 'src/app/components/search/search-bar/sear
 import { OrdereditemComponent } from './components/orders page/ordereditem/ordereditem.component';
 import { CartComponent } from 'src/app/components/shared/header/cart/cart.component';
 import { CartService } from './services/cart.service';
+import { AdminControlsComponent } from './components/dashboard/admin-controls/admin-controls.component';
+import { AdminDisplayComponent } from './components/dashboard/admin-display/admin-display.component';
+import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
  //import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { CartService } from './services/cart.service';
     AboutUsComponent,
     SearchresultComponent,
     OrdereditemComponent,
-    CartComponent
+    CartComponent,
+    AdminControlsComponent,
+    AdminDisplayComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

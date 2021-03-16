@@ -13,13 +13,13 @@ import { BlogComponent } from 'src/app/components/shared/header/blog/blog.compon
 import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
 import { OrdersComponent } from 'src/app/components/orders page/orders.page.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { CreateProductComponent } from 'src/app/components/dashboard/create-product/create-product.component';
-import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
 import { BuyNowComponent } from 'src/app/components/home/1stsectionSlider/buy-nowBtn/buy-now.component';
 import { AboutUsComponent } from 'src/app/components/shared/header/about-us/about-us.component';
 import { SearchresultComponent } from 'src/app/components/search/search-bar/searchresult/searchresult.component';
 import { CartComponent } from 'src/app/components/shared/header/cart/cart.component';
-
+import { CreateProductComponent } from 'src/app/components/dashboard/create-product/create-product.component';
+import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
+import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashboard.component';
 
 const routes = [
   {path:'', component: HomeComponent },
@@ -34,11 +34,14 @@ const routes = [
   { path: 'readmore', component: ReadMoreComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'editproduct', component: EditProductComponent },
-  { path: 'createproduct', component: CreateProductComponent },
   { path: 'buynow', component: BuyNowComponent },
   {path: 'searchresult', component: SearchresultComponent },
-  {path: 'aboutus', component: AboutUsComponent }
+  {path: 'aboutus', component: AboutUsComponent },
+  ///Admin Components
+  { path: 'editproduct', component: EditProductComponent },
+  { path: 'createproduct', component: CreateProductComponent },
+  { path: 'dashboard', component: DashboardComponent },
+
 ]
 
 @NgModule({
