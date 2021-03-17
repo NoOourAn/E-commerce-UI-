@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductsService } from './Services/products.service';
 import{HttpClientModule} from "@angular/common/http";
-import { SearchProductService } from './Services/search-product.service';
 import { SearchBarComponent } from 'src/app/components/search/search-bar/search-bar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegistrationComponent } from 'src/app/components/shared/header/registration/registration.component';
@@ -39,6 +38,7 @@ import { CartService } from './services/cart.service';
 import { AdminControlsComponent } from './components/dashboard/admin-controls/admin-controls.component';
 import { AdminDisplayComponent } from './components/dashboard/admin-display/admin-display.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { AdminService } from './Services/admin.service';
  //import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -103,8 +103,11 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
   ],
   providers: [
     ProductsService,
-    SearchProductService,
-    JwtService,AuthService,CartService],
+    JwtService,
+    AuthService,
+    CartService,
+    AdminService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,11 +18,22 @@ export class JwtService {
   }
    
   register(user) {
-
-console.log(user); 
   return this.httpClient.post('http://localhost:3000/api/users/reg', user)
   }
+
+  AllUsers(id,product){
+    return  this.httpClient.get(`http://localhost:3000/api/users/getUsers`,product)
+  }
+  myProfile(id,product){
+    return  this.httpClient.get(`http://localhost:3000/api/users/myProfile`,product)
+  }
+   updateUser(id,user){
+    return  this.httpClient.patch(`http://localhost:3000/api/users/profileUpdate`,user)
+  }
   
+  deleteUser(id){
+    return  this.httpClient.delete(`http://localhost:3000/api/users/profileDelete`)
+  }
 
 
 logout() {
