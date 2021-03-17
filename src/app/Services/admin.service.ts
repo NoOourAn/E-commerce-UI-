@@ -13,7 +13,7 @@ export class AdminService {
   private flag = new Subject<object>();
   flagObservable = this.flag.asObservable();
 
-  getFlag(value){
+  setFlag(value){
     this.flag.next(value)
   }
 }

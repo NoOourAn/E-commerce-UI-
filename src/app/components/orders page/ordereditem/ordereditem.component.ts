@@ -13,9 +13,11 @@ export class OrdereditemComponent implements OnInit {
   cart:any;
   productsArray =[];
   response
+  totalPrice
   constructor(private cartService:CartService,private productSercice:ProductsService,) { }
 
   ngOnInit(): void {
+    this.totalPrice=0;
     this.fillCartArray();
     this.getProductsInCart();
    
@@ -40,11 +42,15 @@ export class OrdereditemComponent implements OnInit {
       this.cart.forEach(id=> {
         this.productSercice.getProductsByID(id).subscribe(res=>{
           this.response=res;
-          this.productsArray.push(this.response);
+          console.log(this.response[0]);
+          this.totalPrice+=this.response;
+
+          this.productsArray.push(this.response[0]);
         })
       });
 
     }
+    console.log("total price",this.totalPrice);
     console.log(this.productsArray);
 
   }
