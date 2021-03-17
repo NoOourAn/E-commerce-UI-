@@ -8,9 +8,20 @@
         <div class="col-12">
             <br>
             <br>
-            <form class="form-inline waves-light" mdbWavesEffect>
+            <form [formGroup]="myForm" class="form-inline waves-light" mdbWavesEffect>
                 <div class="md-form mt-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup)="search($event);">
+                    <label for="searchby" class="form-label">SearchBy</label>
+                    <br>
+                    <select id="searchby" formControlName="searchby" class="form-select">
+                      <option selected>name</option>
+                      <option>category</option>
+                      <option>brand</option>
+                      <option>highPrice</option>
+                      <option>LowPrice</option>
+                      <option>NewDate</option>
+                      <option>OldDate</option>
+                    </select>
+                    <input class="form-control mr-sm-2" formControlName="body" type="text" placeholder="Search" (keyup)="search($event);">
                     <button type="button" class=" btn btn-light btn-outline-dark">Search</button>
                 </div>
                 <hr>

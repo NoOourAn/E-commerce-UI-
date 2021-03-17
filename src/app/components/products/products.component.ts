@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   products
   subscriber
   subscriberByID
+
   // authorization
   isLoggedIn: Observable<boolean>;
 
@@ -24,9 +25,8 @@ export class ProductsComponent implements OnInit {
     },error=>console.log(error))
   }
   ngOnInit(): void {
-    // this.products=this.productSercice.getProducts();
     this.getProducts();
-    // this.products=this.searchProduct.getSelectedProducts();
+    
     this.isLoggedIn = this.authService.isLoggedIn;
     console.log("start")
 
@@ -35,13 +35,15 @@ export class ProductsComponent implements OnInit {
       this.authService.logout();                      // {3}
     }
     getProducts(){
-      this.subscriber=this.productSercice.getProducts().subscribe(
-        (response)=>{
-          console.log(response);
-          this.products=response;
-        },(error)=>{
-          console.log(error);
-        })
+      this.subscriber =  this.productSercice.getProducts()
+     .subscribe((response)=>{
+   console.log(response);
+   this.products = response
+    this.subscriber.unsubscribe();
+     },
+     (err)=>{
+   console.log(err)
+     })
     }
     addProduct(){
       // console.log("test")
