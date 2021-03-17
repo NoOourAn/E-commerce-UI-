@@ -13,12 +13,12 @@ export class AdminControlsComponent implements OnInit {
   ngOnInit(): void {
   }
   showProducts(){
-    this.adminService.flag = 0;
+    // this.adminService.flag = 0;
   }
   showOrders(){
-    this.adminService.flag = 1;
+    // this.adminService.flag = 1;
   }
   showUsers(){
-    this.adminService.flag = 2;
+    // this.adminService.flag = 2;
   }
 }
