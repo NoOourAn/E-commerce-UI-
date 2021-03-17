@@ -32,7 +32,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
- this.ProductsService.products = this.prod;
+ this.ProductsService.productsSearch = this.prod;
  window.location.reload(); 
  
     },
@@ -47,7 +47,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
- this.ProductsService.products = this.prod;
+ this.ProductsService.productsSearch  = this.prod;
  window.location.reload(); 
  
     },
@@ -63,7 +63,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
- this.ProductsService.products = this.prod;
+ this.ProductsService.productsSearch  = this.prod;
  window.location.reload(); 
  
     },
@@ -79,7 +79,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
- this.ProductsService.products = this.prod;
+ this.ProductsService.productsSearch   = this.prod;
  window.location.reload(); 
  
     },
@@ -95,7 +95,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
- this.ProductsService.products = this.prod;
+ this.ProductsService.productsSearch  = this.prod;
  window.location.reload(); 
  
     },
@@ -111,14 +111,12 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
- this.ProductsService.products = this.prod;
+ this.ProductsService.productsSearch  = this.prod;
  window.location.reload(); 
- 
     },
     (err)=>{
  console.log(err)
     })
-
    }
    if (myForm.searchby == "OldDate")
    {
@@ -126,9 +124,8 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
- this.ProductsService.products = this.prod;
+ this.ProductsService.productsSearch  = this.prod;
  window.location.reload(); 
- 
     },
     (err)=>{
  console.log(err)

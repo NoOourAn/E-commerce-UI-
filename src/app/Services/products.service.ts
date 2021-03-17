@@ -5,6 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 })
 export class ProductsService {
    products
+   productsSearch
 
   constructor(private myClient:HttpClient) { }
 
