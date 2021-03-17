@@ -23,7 +23,7 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashb
 
 const routes = [
   {path:'', component: HomeComponent },
-  {path:'products',component:ProductsComponent,canActivate: [AuthGuard]},
+  {path:'products',component:ProductsComponent},
   {path:'login',component:SignInComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'signin', component:SignInComponent},

@@ -8,9 +8,20 @@
         <div class="col-12">
             <br>
             <br>
-            <form class="form-inline waves-light" mdbWavesEffect>
+            <form [formGroup]="myForm" class="form-inline waves-light" mdbWavesEffect>
                 <div class="md-form mt-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup)="search($event);">
+                    <label for="searchby" class="form-label">SearchBy</label>
+                    <br>
+                    <select id="searchby" formControlName="searchby" class="form-select">
+                      <option selected>name</option>
+                      <option>category</option>
+                      <option>brand</option>
+                      <option>highPrice</option>
+                      <option>LowPrice</option>
+                      <option>NewDate</option>
+                      <option>OldDate</option>
+                    </select>
+                    <input class="form-control mr-sm-2" formControlName="body" type="text" placeholder="Search" (keyup)="search($event);">
                     <button type="button" class=" btn btn-light btn-outline-dark">Search</button>
                 </div>
                 <hr>
@@ -18,11 +29,31 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 14rem;" >
+                <img class="card-img-top"  alt="Bologna">
+                <div class="card-body">
+                    <h4 class="card-title"></h4>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <div class="card-body text-center">
+                        <app-rating-events></app-rating-events>
+                        <hr>
+                        <h6 class="mb-3">
+                            <span class="text-danger mr-1"></span>
+                            <span class="text-grey"><s></s></span>
+                        </h6>
+
+                        <button type="button" class="btn btn-danger btn-sm mr-1 mb-2">
+                         <i class="fa fa-shopping-cart pr-2"><a  routerlinkactive="text-danger" routerlink="addtocart"> Add to cart</a></i>
+                        </button>
+                        <button type="button" class="btn btn-light btn-sm mr-1 mb-2">
+                          <i class="fa fa-info-circle pr-2"><a  routerlink="/Details" >Details</a></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
