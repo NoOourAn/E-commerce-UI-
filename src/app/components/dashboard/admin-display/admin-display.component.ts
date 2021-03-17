@@ -11,5 +11,11 @@ export class AdminDisplayComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  products=[]
+  users
+  orders
+
+  flag = 0;
+
 
 }
