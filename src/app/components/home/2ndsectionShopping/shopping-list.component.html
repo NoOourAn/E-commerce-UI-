@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card" style="width: 14rem;" >
-                <img class="card-img-top"  alt="Bologna">
+            <div class="card" style="width: 14rem;">
+                <img class="card-img-top" alt="Bologna">
                 <div class="card-body">
                     <h4 class="card-title"></h4>
                     <h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -14,15 +14,55 @@
                             <span class="text-grey"><s></s></span>
                         </h6>
 
-                        <button type="button" class="btn btn-danger btn-sm mr-1 mb-2">
-                         <i class="fa fa-shopping-cart pr-2"><a  routerlinkactive="text-danger" routerlink="addtocart"> Add to cart</a></i>
+                        <button type="button" class="btn btn-danger btn-sm mr-1 mb-2" (click)="addTocart(1)">
+                         <i class=" fa fa-shopping-cart pr-2 "><a  routerlinkactive="text-danger " > Add to cart</a></i>
                         </button>
-                        <button type="button" class="btn btn-light btn-sm mr-1 mb-2">
-                          <i class="fa fa-info-circle pr-2"><a  routerlink="/Details" >Details</a></i>
+                        <button type="button " class="btn btn-light btn-sm mr-1 mb-2 ">
+                          <i class="fa fa-info-circle pr-2 "><a  routerlink="/Details " >Details</a></i>
                         </button>
+                        <!-- <button type="button " class="btn btn-danger btn-sm px-3 mb-2 material-tooltip-main " data-toggle="tooltip " data-placement="top " title="Add to wishlist ">
+                          <i class="far fa-heart "></i>
+                        </button> -->
+
                     </div>
                 </div>
             </div>
         </div>
+        <!-- <div class="col ">
+            <div class="card " style="width: 14rem; ">
+                <img class="card-img-top " src="https://cdn11.bigcommerce.com/s-1xt05gm9ao/images/stencil/320w/products/172/655/2__47743.1568440786.jpg?c=2g " alt="Bologna ">
+                <div class="card-body ">
+                    <h4 class="card-title ">Bologna</h4>
+                    <h6 class="card-subtitle mb-2 text-muted ">Emilia-Romagna Region, Italy</h6>
+                    <p class="card-text ">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
+                    <a href="# " class="card-link ">Read More</a>
+                    <a href="# " class="card-link ">Book a Trip</a>
+                </div>
+            </div>
+        </div>
+        <div class="col ">
+            <div class="card " style="width: 14rem; ">
+                <img class="card-img-top " src="https://cdn11.bigcommerce.com/s-1xt05gm9ao/images/stencil/320w/products/173/682/4__63824.1568455454.jpg?c=2 " alt="Bologna ">
+                <div class="card-body ">
+                    <h4 class="card-title ">Bologna</h4>
+                    <h6 class="card-subtitle mb-2 text-muted ">Emilia-Romagna Region, Italy</h6>
+                    <p class="card-text ">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
+                    <a href="# " class="card-link ">Read More</a>
+                    <a href="# " class="card-link ">Book a Trip</a>
+                </div>
+            </div>
+        </div>
+        <div class="col ">
+            <div class="card " style="width: 14rem; ">
+                <img class="card-img-top " src="https://cdn11.bigcommerce.com/s-1xt05gm9ao/images/stencil/320w/products/175/683/1__36010.1568458767.jpg?c=2 " alt="Bologna ">
+                <div class="card-body ">
+                    <h4 class="card-title ">Bologna</h4>
+                    <h6 class="card-subtitle mb-2 text-muted ">Emilia-Romagna Region, Italy</h6>
+                    <p class="card-text ">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
+                    <a href="# " class="card-link ">Read More</a>
+                    <a href="# " class="card-link ">Book a Trip</a>
+                </div>
+            </div>
+        </div> -->
     </div>
 </div>
