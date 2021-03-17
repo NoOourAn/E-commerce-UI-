@@ -1,4 +1,7 @@
-<div class="main-block">
+<div class="main-block" [ngSwitch]="flag"> 
+  
+  <!-- products -->
+  <div *ngSwitchCase="0">
     <table class="table table-borderless table-striped table-earning">
       <thead style="background-color: #2794B5; color: white;">
       <tr>
@@ -21,10 +24,154 @@
         <td>{{ product.price }}</td>
       </tr>
   
-      <ng-template #notExist>
-        <td> ----- </td>
-      </ng-template>    
-      
       </tbody>
       </table>
+      <button class="btn btn-primary">Add New Product</button>
+  </div>
+
+
+    <!-- orders -->
+    <div *ngSwitchCase="1">
+
+    <table class="table table-borderless table-striped table-earning">
+      <thead style="background-color: #2794B5; color: white;">
+      <tr>
+      <th>User</th>
+      <th>Placed Date</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Products</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr *ngFor="let order of orders">
+        <td>{{ order.user }}</td>
+        <td>{{ order.PlacedDate }}</td>
+        <td>{{ order.totalPrice }}</td>
+        <td>{{ order.status }}</td>
+        <td *ngFor="let product of order.products">{{ product.productName }} X {{ product.quantity }}</td>
+      </tr>
+  
+      </tbody>
+      </table>
+      <button class="btn btn-primary">Add New Order</button>
+      </div>
+
+      <!-- users -->
+      <div *ngSwitchCase="2">
+
+      <table class="table table-borderless table-striped table-earning">
+        <thead style="background-color: #2794B5; color: white;">
+        <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Created At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.createdAt }}</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+
 </div>
+<!-- *ngIf="flag == 0;then products" *ngIf="flag == 1;then orders" *ngIf="flag == 2;then users" -->
+
+<!-- <ng-template #products>
+  <div class="main-block">
+    <table class="table table-borderless table-striped table-earning">
+      <thead style="background-color: #2794B5; color: white;">
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Number In Stock</th>
+      <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.numberInStock }}</td>
+        <td>{{ product.price }}</td>
+      </tr>
+  
+      </tbody>
+      </table>
+      <button class="btn btn-primary">Add New Product</button>
+
+  </div>
+</ng-template>   -->
+
+<!-- <ng-template #orders>
+  <div class="main-block">
+    <table class="table table-borderless table-striped table-earning">
+      <thead style="background-color: #2794B5; color: white;">
+      <tr>
+      <th>User</th>
+      <th>Placed Date</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Products</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr *ngFor="let order of orders">
+        <td>{{ order.user }}</td>
+        <td>{{ order.PlacedDate }}</td>
+        <td>{{ order.totalPrice }}</td>
+        <td>{{ order.status }}</td>
+        <td *ngFor="let product of order.products">{{ product.productName }} X {{ product.quantity }}</td>
+      </tr>
+  
+      </tbody>
+      </table>
+      <button class="btn btn-primary">Add New Order</button>
+  </div>
+
+</ng-template>   -->
+
+<!-- <ng-template #users>
+  <div class="main-block">
+
+    <table class="table table-borderless table-striped table-earning">
+      <thead style="background-color: #2794B5; color: white;">
+      <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Created At</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.createdAt }}</td>
+      </tr>
+      </tbody>
+      </table>
+  </div>
+</ng-template>   -->
+
+
+<ng-template #notExist>
+  <td> ----- </td>
+</ng-template>  
+
+
+<ng-template #noData>
+  <div class="alert-danger">
+    No Data available
+  </div>
+</ng-template> 

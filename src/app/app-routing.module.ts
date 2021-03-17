@@ -35,8 +35,8 @@ const routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'buynow', component: BuyNowComponent },
-  {path: 'searchresult', component: SearchresultComponent },
-  {path: 'aboutus', component: AboutUsComponent },
+  { path: 'searchresult', component: SearchresultComponent },
+  { path: 'aboutus', component: AboutUsComponent },
   ///Admin Components
   { path: 'editproduct', component: EditProductComponent },
   { path: 'createproduct', component: CreateProductComponent },
