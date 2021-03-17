@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row">
-        <div class="col">
-            <div class="card" style="width: 14rem;" >
+        <div class="col" *ngFor="let product of productsArray">
+            <div class="card" style="width: 14rem;"  >
                 <img class="card-img-top"  alt="Bologna">
                 <div class="card-body">
-                    <h4 class="card-title"></h4>
-                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <h4 class="card-title">{{product.name}}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{product.category}}</h6>
                     <div class="card-body text-center">
                         <app-rating-events></app-rating-events>
                         <hr>
                         <h6 class="mb-3">
-                            <span class="text-danger mr-1"></span>
-                            <span class="text-grey"><s></s></span>
+                            <span class="text-danger mr-1">{{product.brand}}</span>
+                            <span class="text-grey">{{product.price}}<s></s></span>
                         </h6>
 
                         <button type="button" class="btn btn-danger btn-sm mr-1 mb-2">
