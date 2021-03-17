@@ -9,6 +9,7 @@ export class CartService {
   private NumberOfItem = new BehaviorSubject<number>(this.card.length)
   constructor() { 
    
+    
       localStorage.setItem("card",JSON.stringify([]));
   
     console.log(localStorage.getItem("card"));

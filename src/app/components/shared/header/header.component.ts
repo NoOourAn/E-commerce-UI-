@@ -22,6 +22,10 @@ export class HeaderComponent implements OnInit {
   receipt(){
 		this.route.navigate(['/receipt']);
   }
+  orderspage()
+  {
+    this.route.navigate(['/orders']);
+  }
   
   blog(){
 		this.route.navigate(['/blog']);
