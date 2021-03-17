@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchProductService } from 'src/app/Services/search-product.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/Services/products.service';
 
@@ -10,7 +9,7 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor(private searchProduct:SearchProductService,private ProductsService:ProductsService) { }
+  constructor(private ProductsService:ProductsService) { }
 
   sub 
   prod
