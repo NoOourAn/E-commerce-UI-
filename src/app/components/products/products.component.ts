@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   products
   subscriber
   subscriberByID
+  productsArray =[]
 
   // authorization
   isLoggedIn: Observable<boolean>;
@@ -33,6 +34,11 @@ export class ProductsComponent implements OnInit {
      .subscribe((response)=>{
    console.log(response);
    this.products = response
+   for(let i=0;i<this.products.length;i++){
+     this.productsArray.push(this.products[i])
+   }
+   console.log( this.productsArray  );
+
     this.subscriber.unsubscribe();
      },
      (err)=>{
