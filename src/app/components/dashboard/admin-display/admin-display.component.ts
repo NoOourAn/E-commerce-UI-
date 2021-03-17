@@ -11,6 +11,7 @@ export class AdminDisplayComponent implements OnInit {
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
+    this.getFlag();
   }
   products=[]
   users

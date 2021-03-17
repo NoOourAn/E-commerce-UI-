@@ -5,11 +5,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartService {
   
-  card:string[]=JSON.parse(localStorage.getItem("card"));
-  private NumberOfItem = new BehaviorSubject<number>(this.card.length)
+  NumberOfItem
+  card
   constructor() { 
-   
-      localStorage.setItem("card",JSON.stringify([]));
+    localStorage.setItem("card",JSON.stringify([]));
+
+    if(localStorage.getItem("card")){
+      this.card=JSON.parse(localStorage.getItem("card"));
+      this.NumberOfItem = new BehaviorSubject<number>(this.card.length)
+    }
   
     console.log(localStorage.getItem("card"));
     console.log(this.card);

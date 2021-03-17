@@ -13,12 +13,12 @@ export class AdminControlsComponent implements OnInit {
   ngOnInit(): void {
   }
   showProducts(){
-    // this.adminService.flag = 0;
+    this.adminService.setFlag(0) ///to update the sibling (admin display component) with products
   }
   showOrders(){
-    // this.adminService.flag = 1;
+    this.adminService.setFlag(1) ///to update the sibling (admin display component) with orders
   }
   showUsers(){
-    // this.adminService.flag = 2;
+    this.adminService.setFlag(2) ///to update the sibling (admin display component) with users
   }
 }
