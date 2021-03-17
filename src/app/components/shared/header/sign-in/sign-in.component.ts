@@ -11,7 +11,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class SignInComponent implements OnInit {
 
   form: FormGroup;
-  token                    // {1}
+  token 
+  response                   // {1}
   private formSubmitAttempt: boolean; // {2}
 
   constructor(
@@ -36,17 +37,28 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.valid) {
+    if (this.form.valid)
+     {
       // this.authService.login(this.form.value); // {7}
       
       this.jwtService.login(this.form.value).subscribe((res => {
-            this.token=res
-            console.log(this.token.token);
-            localStorage.setItem('access_token', this.token.token);
-            this.authService.login();
+            this.response=res
+            console.log(this.response.success);
+            if(this.response.success){
+              console.log(this.response.token);
+             localStorage.setItem('access_token', this.response.token);
+             this.authService.login();
+
+            }else{
+              console.log(this.response.message);
+              alert(this.response.message)
+            }
+          
         }))
+    }else{
+      alert("this form isn't valid")
     }
-    this.formSubmitAttempt = true;             // {8}
+    // this.formSubmitAttempt = true;             // {8}
   }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { JwtService } from 'src/app/Services/jwt.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -12,14 +13,14 @@ import { JwtService } from 'src/app/Services/jwt.service';
 export class RegistrationComponent implements OnInit {
   userForm
   response
-  constructor(private formBuilder: FormBuilder,private authService:AuthService,private jwtService:JwtService) { }
+  constructor(private formBuilder: FormBuilder,private authService:AuthService,private jwtService:JwtService,private route:Router ) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      lastName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      username: ['',[Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
-      password: ['',[Validators.required]],
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$'),Validators.minLength(2)]],
+      lastName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$'),Validators.minLength(2)]],
+      username: ['',[Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'),Validators.minLength(3),Validators.maxLength(30)]],
+      password: ['',[Validators.required,Validators.minLength(7)]],
       gender: ['',[Validators.required]],
       email: ['', [Validators.required, Validators.email]]
     
@@ -33,17 +34,19 @@ submit(){
      .subscribe(res => {
         console.log(res);
         this.response=res
-        if(!this.response.success){
-          //failed
+        if(this.response.success){
+          alert("you register successfully");
+          this.route.navigate(['/']);
+
         }else{
-          // success
+          alert(this.response.message);
         }
-        // this.login(user.username, user.password)
+      
       })
-    // alert('User form is valid!!')
+    
 
   } else {
-    // alert('User form is not valid!!')
+     alert('User form is not valid!!')
     console.log(this.userForm)
   }
 }

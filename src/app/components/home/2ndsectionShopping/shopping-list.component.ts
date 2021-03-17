@@ -20,8 +20,8 @@ export class ShoppingListComponent implements OnInit {
   
   }
 
-  addtocart(productDetails:any){
-    this.cartService.addToCArt(productDetails);
+  addTocart(id){
+    this.cartService.addTocart(id)
   }
 
 }

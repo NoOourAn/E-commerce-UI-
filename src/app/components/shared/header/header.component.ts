@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private route:Router){} 
+    noOfcartItem
+  constructor(private route:Router,private CartService:CartService){} 
   
   	search(){
 		this.route.navigate(['/search']); 
@@ -33,6 +35,10 @@ export class HeaderComponent implements OnInit {
 		this.route.navigate(['/register']);
 	}
   ngOnInit(): void {
-  }
+    this.CartService.getNumberOfItemINcart.subscribe(res=>{
+      this.noOfcartItem=res;
+      console.log("from cart",res);
+    })
+    }
 
 }
