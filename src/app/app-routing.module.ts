@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegistrationComponent } from 'src/app/components/shared/header/registration/registration.component';
-import { AuthGuard } from './guards/auth.guard';
+// import { AuthGuard } from './guards/auth.guard';
 import { SignInComponent } from 'src/app/components/shared/header/sign-in/sign-in.component';
 import {receiptComponent} from 'src/app/components/orders page/receipt/receipt.component';
 import { SearchBarComponent } from 'src/app/components/search/search-bar/search-bar.component';
@@ -20,10 +20,11 @@ import { CartComponent } from 'src/app/components/shared/header/cart/cart.compon
 import { CreateProductComponent } from 'src/app/components/dashboard/create-product/create-product.component';
 import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashboard.component';
+import { ProductcollectionComponent } from 'src/app/components/productcollection/productcollection.component';
 
 const routes = [
   {path:'', component: HomeComponent },
-  {path:'products',component:ProductsComponent},
+  {path:'products',component:ProductsComponent,},//canActivate: [AuthGuard]
   {path:'login',component:SignInComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'signin', component:SignInComponent},
@@ -33,22 +34,27 @@ const routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'readmore', component: ReadMoreComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent,},//canActivate: [AuthGuard]
   { path: 'buynow', component: BuyNowComponent },
   { path: 'searchresult', component: SearchresultComponent },
+  { path: 'aboutus', component: AboutUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   ///Admin Components
   { path: 'editproduct', component: EditProductComponent },
   { path: 'createproduct', component: CreateProductComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'orders', component: CartComponent }
+  { path: 'orders', component: CartComponent },
+  { path: 'products', component: ProductcollectionComponent },
+ 
 ]
+;
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    
   ],
   exports: [RouterModule]
 })

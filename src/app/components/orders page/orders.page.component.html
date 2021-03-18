@@ -9,7 +9,7 @@
     <div class="row">
         <!--Grid column-->
         <div class="col-lg-8">
-            <app-ordereditem></app-ordereditem>
+            <app-ordereditem [productsArray]="productsArray"></app-ordereditem>
             <!-- Card -->
             <!-- <div class="card wish-list mb-3">
                 <div class="card-body">
@@ -150,7 +150,7 @@
                             <div>
                                 <strong>The Cost (including VAT)</strong>
                             </div>
-                            <span><strong>$53.98</strong></span>
+                            <span><strong>{{totalPrice}}</strong></span>
                         </li>
                     </ul>
 

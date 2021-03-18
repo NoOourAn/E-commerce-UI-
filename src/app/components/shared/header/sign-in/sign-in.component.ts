@@ -48,10 +48,22 @@ export class SignInComponent implements OnInit {
             console.log(this.response.success);
             if(this.response.success){
               console.log(this.response.token);
-             localStorage.setItem('access_token', this.response.token);
-             this.authService.login();
-             this.route.navigate(['/profile']);
+              console.log(this.response.user);
+              console.log(this.response.user.username);
 
+             localStorage.setItem('access_token', this.response.token);
+            if(this.response.user.username=="admin"){
+              localStorage.setItem('admin',"true");
+              this.authService.loginAsAdmin();  
+            }else{
+              if(localStorage.getItem('admin')){
+                localStorage.removeItem("admin"); 
+              }
+            }
+
+           this.authService.login();
+             
+           this.route.navigate(['/home']);
             }else{
               console.log(this.response.message);
               alert(this.response.message)

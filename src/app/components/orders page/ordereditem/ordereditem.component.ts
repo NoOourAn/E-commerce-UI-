@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 //import {Router} from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/Services/products.service';
@@ -10,68 +10,17 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class OrdereditemComponent implements OnInit {
   
-  cart:any;
-  productsArray =[];
-  response
-  totalPrice
+  // cart:any;
+  @Input() productsArray =[];
+  // response
+  // totalPrice=0
+  // order={"totalPrice":this.totalPrice,"products":[{"productName":"this product name from reciet","quantity":"10"}]}
   constructor(private cartService:CartService,private productSercice:ProductsService,) { }
 
   ngOnInit(): void {
-    this.totalPrice=0;
-    this.fillCartArray();
-    this.getProductsInCart();
-   
+   console.log(this.productsArray);
+    
   }
 
-  fillCartArray(){
-    if(localStorage.getItem("card")){
-      this.cart=this.cartService.getcart();
-      console.log(this.cart);
-    }
-
-  }
-
-  getProductsInCart(){
-
-    if(this.cart.length!=0){
-      
-      // for(let i=0;i<this.cart.length;i++){
-
-      // }
-
-      this.cart.forEach(id=> {
-        this.productSercice.getProductsByID(id).subscribe(res=>{
-          this.response=res;
-          console.log(this.response[0]);
-          this.totalPrice+=this.response;
-
-          this.productsArray.push(this.response[0]);
-        })
-      });
-
-    }
-    console.log("total price",this.totalPrice);
-    console.log(this.productsArray);
-
-  }
 
 }
-
-//   getProducts(){
-//     this.subscriber =  this.productSercice.getProducts()
-//    .subscribe((response)=>{
-//  console.log(response);
-//  this.products = response
-//  for(let i=0;i<this.products.length;i++){
-//    this.productsArray.push(this.products[i])
-//  }
-//  console.log( this.productsArray  );
-
-//   this.subscriber.unsubscribe();
-//    },
-//    (err)=>{
-//  console.log(err)
-//    })
-//   }
-
-

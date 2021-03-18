@@ -50,6 +50,8 @@ logout() {
 public get loggedIn(): boolean{
   return localStorage.getItem('access_token') !==  null;
 }
-
+public get admin(): boolean{
+  return localStorage.getItem('admin') !==  null;
+}
 }
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {JwtService} from 'src/app/services/jwt.service'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {Router} from '@angular/router';
+
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
@@ -14,8 +15,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class ProfileComponent implements OnInit {
 
+  
   constructor(public JwtService:JwtService,   private modalService: NgbModal,
-    private router: Router) { }
+    private route: Router) { }
     title = 'appBootstrap';
     closeResult: string;
 
@@ -50,6 +52,11 @@ export class ProfileComponent implements OnInit {
     console.log(localStorage.getItem("access_token"))
     this.getMyProfile();
   }
+ 
+    editprofile(){
+      this.route.navigate(['/buynow']);
+    }
+ 
 
   getMyProfile(){
     let sub =  this.JwtService.myProfile()
@@ -109,7 +116,7 @@ console.log(response)
 this.user="";
 this.JwtService.user=""
 localStorage.clear;
-this.router.navigate(['/home'])
+this.route.navigate(['/home'])
 },
  (err)=>{
 console.log(err)

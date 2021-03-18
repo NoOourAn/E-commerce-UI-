@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
-
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,7 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class HeaderComponent implements OnInit {
 
     noOfcartItem
-  constructor(private route:Router,private CartService:CartService){} 
+  constructor(private route:Router,private CartService:CartService,public loginService: LoginService){} 
   
   	search(){
 		this.route.navigate(['/search']); 
@@ -18,7 +18,12 @@ export class HeaderComponent implements OnInit {
   home(){
 		this.route.navigate(['/']);
 	}
-
+	aboutus(){
+		this.route.navigate(['/aboutus']); 
+  }
+  products(){
+		this.route.navigate(['/products']);
+	}
   receipt(){
 		this.route.navigate(['/receipt']);
   }
