@@ -40,6 +40,8 @@ import { AdminDisplayComponent } from './components/dashboard/admin-display/admi
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { AdminService } from './Services/admin.service';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ProductcollectionComponent } from 'src/app/components/productcollection/productcollection.component';
  //import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { ProductdetailsComponent } from './components/productdetails/productdeta
     AdminControlsComponent,
     AdminDisplayComponent,
     DashboardComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    EditProfileComponent,
+    ProductcollectionComponent
   ],
   imports: [
     BrowserModule,

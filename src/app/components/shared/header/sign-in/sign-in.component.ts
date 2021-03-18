@@ -51,7 +51,6 @@ export class SignInComponent implements OnInit {
              localStorage.setItem('access_token', this.response.token);
              this.authService.login();
              this.route.navigate(['/profile']);
-
             }else{
               console.log(this.response.message);
               alert(this.response.message)
