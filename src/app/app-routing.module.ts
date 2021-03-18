@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegistrationComponent } from 'src/app/components/shared/header/registration/registration.component';
-import { AuthGuard } from './guards/auth.guard';
+// import { AuthGuard } from './guards/auth.guard';
 import { SignInComponent } from 'src/app/components/shared/header/sign-in/sign-in.component';
 import {receiptComponent} from 'src/app/components/orders page/receipt/receipt.component';
 import { SearchBarComponent } from 'src/app/components/search/search-bar/search-bar.component';
@@ -23,7 +23,7 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashb
 
 const routes = [
   {path:'', component: HomeComponent },
-  {path:'products',component:ProductsComponent},
+  {path:'products',component:ProductsComponent,},//canActivate: [AuthGuard]
   {path:'login',component:SignInComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'signin', component:SignInComponent},
@@ -33,7 +33,7 @@ const routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'readmore', component: ReadMoreComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent,},//canActivate: [AuthGuard]
   { path: 'buynow', component: BuyNowComponent },
   { path: 'searchresult', component: SearchresultComponent },
   { path: 'aboutus', component: AboutUsComponent },
@@ -43,12 +43,14 @@ const routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'orders', component: CartComponent }
 ]
+;
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    
   ],
   exports: [RouterModule]
 })

@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, of } from 'rxjs';
 import {HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { JwtService } from './jwt.service';
+ import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable(
@@ -11,26 +12,35 @@ import { JwtService } from './jwt.service';
     providedIn: 'root',
    }
 )
-export class AuthService {
+export class AuthService{
   
-  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
-
+  private loggedIn = new BehaviorSubject<boolean>(false); 
+  private admin = new BehaviorSubject<boolean>(false); 
   get isLoggedIn() {
-    return this.loggedIn.asObservable(); // {2}
+
+    return this.loggedIn.asObservable(); 
+  }
+
+  get isAdmin() {
+
+    return this.admin.asObservable(); 
   }
 
   constructor(
-    private router: Router,private httpClient: HttpClient, private jwtService:JwtService
-  ) {}
-
- 
-
+    private router: Router,private httpClient: HttpClient, private jwtService:JwtService,
+) {}
+  
   login(){
-
-    // this.jwtService.login(user.username,user.password);
-    if (this.jwtService.loggedIn ) { // {3}
+    if (this.jwtService.loggedIn ) {
       this.loggedIn.next(true);
-      this.router.navigate(['/home']);
+      
+    }
+  }
+
+  loginAsAdmin(){
+    if (this.jwtService.admin ) {
+      this.loggedIn.next(true);
+      
     }
   }
 
