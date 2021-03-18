@@ -8,10 +8,10 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{product.category}}</h6>
                     <div class="card-body text-center">
                         <app-rating-events></app-rating-events>
-                        <hr>
+                        
                         <h6 class="mb-3">
-                            <span class="text-danger mr-1">{{product.brand}}</span>
-                            <span class="text-grey">{{product.price}}<s></s></span>
+                            <span class="text-danger mr-1">{{product.price}}</span>
+                            <span class="text-grey"><s>{{product.price + 300}}</s></span>
                         </h6>
 
                         <button type="button" class="btn btn-danger btn-sm mr-1 mb-2">

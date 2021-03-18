@@ -4,6 +4,9 @@
 <br>
 <br>
 <div class="container emp-profile">
+    <div class="alert alert-danger"  *ngIf="this.JwtService.err">{{this.JwtService.err}}</div>
+    <div class="alert alert-success"  *ngIf="this.JwtService.succ">{{this.JwtService.succ}}</div>
+
     <form method="post">
         <div class="row">
             <div class="col-md-4">
@@ -18,12 +21,11 @@
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        Kshiti Ghelani
+{{user.username}}
                     </h5>
                     <h6>
-                        kshiti.ghelani@yahoo.com
+                        {{user.email}}
                     </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -35,24 +37,12 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                <button type="submit" class="profile-edit-btn" (click)="setDefault()"  (click)="open(mymodal)"> Edit Profile</button> 
+                <button type="submit" class="profile-edit-btn" (click)="deleteUser()">Delete Profile</button> 
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-work">
-                    <p>WORK LINK</p>
-                    <a href="">Website Link</a><br/>
-                    <a href="">Bootsnipp Profile</a><br/>
-                    <a href="">Bootply Profile</a>
-                    <p>SKILLS</p>
-                    <a href="">Web Designer</a><br/>
-                    <a href="">Web Developer</a><br/>
-                    <a href="">WordPress</a><br/>
-                    <a href="">WooCommerce</a><br/>
-                    <a href="">PHP, .Net</a><br/>
-                </div>
-            </div>
+       
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -61,7 +51,7 @@
                                 <label>User Id</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Kshiti123</p>
+                                <p>{{user._id}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -69,7 +59,7 @@
                                 <label>Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Kshiti Ghelani</p>
+                                <p>{{user.username}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -77,79 +67,69 @@
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
-                                <p>kshitighelani@gmail.com</p>
+                                <p> {{user.email}}</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>123 456 7890</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Profession</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Web Developer and Designer</p>
-                            </div>
-                        </div>
+                       
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Experience</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Hourly Rate</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>10$/hr</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Total Projects</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>230</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>English Level</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Availability</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>6 months</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br/>
-                                <p>Your detail description</p>
-                            </div>
-                        </div>
-                    </div>
+    
                 </div>
             </div>
-        </div>
     </form>
 </div>
 <br>
 <br>
 <br>
+
+<ng-template #mymodal let-modal>
+    <h4 class="text-center p-4">
+  update
+  </h4>
+  <form [formGroup]="myForm" class="row g-3 ">
+    <div class="form-group col-12"  >
+  
+      <div class="col-12"  >
+          <label for="username" class="form-label">username</label>
+          <input type="username" name="username" formControlName="username"  value=`${user.username}`  formControlValue="user.username" class="form-control" id="username" >
+          <p *ngIf="myForm.controls.username.errors  && myForm.controls.username.touched" class="alert alert-danger">
+            title is not valid
+            <span *ngIf="myForm.controls.username.errors.required && myForm.controls.username.touched">
+                plz fill title input
+            </span>
+            <span *ngIf="myForm.controls.username.errors.maxlength && myForm.controls.username.touched">
+            length must be less than 100
+            </span>
+            <span *ngIf="myForm.controls.username.errors.mixlength && myForm.controls.username.touched">
+              length must be more than 3
+              </span>
+        </p>  
+      </div>
+  
+      <div class="col-12">
+        <label for="email" class="form-label">email</label>
+        <input type="email" name="email" formControlName="email" value=`${user.email}`  class="form-control" id="email" placeholder="email">
+        <p *ngIf="myForm.controls.email.errors  && myForm.controls.email.touched" class="alert alert-danger">
+            email is not valid
+          <span *ngIf="myForm.controls.email.errors.required && myForm.controls.email.touched">
+              plz fill email input
+          </span>
+          <span *ngIf="myForm.controls.email.errors.email && myForm.controls.email.touched">
+        enter a valid email
+          </span>
+         
+      </p> 
+    </div>
+    <div class="form-group text-center">
+        <input type="button" class="btn btn-dark" value="update"
+        (click)="updateMyProfile()"(click)="modal.close('Save click')"
+        />
+    </div>
+  
+  
+  
+      </div>
+  
+   
+    
+  </form>
+  </ng-template>
