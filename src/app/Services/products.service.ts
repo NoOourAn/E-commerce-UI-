@@ -94,9 +94,22 @@ export class ProductsService {
     return this.myClient.get(this.GetBrand)
   }
 
-  addProduct(product){
-    return this.myClient.post(this.AddProduct,product);
+  addProduct(product,image){
+    console.log(product)
+    var formData = new FormData()
+    formData.append('file',image);
+    formData.append('name',"boom");
+    formData.append('brand',"boom");
+    formData.append('category',"boom");
+    formData.append('numberInStock',"10");
+    formData.append('price',"100");
+    formData.append('description',"boom");
+
+    console.log(formData)
+    // formData {name,category,brand,numberInStock,price,description,file} = product
+    return this.myClient.post(this.AddProduct,formData);
   }
+
   updateProduct(id,product){
     return this.myClient.patch(`${this.UpdateProduct}/${id}`,product)
   }
@@ -105,5 +118,4 @@ export class ProductsService {
     return this.myClient.delete(`${this.DeleteProduct}/${id}`)
   }
 
-  
 }

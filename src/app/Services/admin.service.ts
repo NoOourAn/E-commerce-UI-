@@ -7,9 +7,6 @@ import { Subject } from 'rxjs';
 export class AdminService {
 
   constructor() { }
-  //zero indicates products
-  //one indicates orders
-  //two indicates users
   private flag = new Subject<object>();
   flagObservable = this.flag.asObservable();
 

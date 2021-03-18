@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class ProductsComponent implements OnInit {
   // authorization
   isLoggedIn: Observable<boolean>;
 
-  constructor(private productSercice:ProductsService,private authService: AuthService){
+  constructor(private productSercice:ProductsService,private authService: AuthService,private cartService:CartService ){
   }
   ngOnInit(): void {
 
@@ -45,7 +46,12 @@ export class ProductsComponent implements OnInit {
    console.log(err)
      })
     }
-
+      // add porduct to cart
+    addTocart(id){
+      console.log(id);
+       this.cartService.addTocart(id)
+    }
+  
 
  
 

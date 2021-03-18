@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEventType } from '@angular/common/http';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/Services/products.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,47 +12,96 @@ import {HttpClient, HttpEventType } from '@angular/common/http';
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.css']
 })
-export class CreateProductComponent implements OnInit {
+export class CreateProductComponent implements OnInit ,OnDestroy{
 
-selectedFile: File= null;
+  constructor(private productService:ProductsService,private router:Router) {}
 
-  createproductform
-  // constructor(private myClient:HttpClient,private formBuilder: FormBuilder) {}
  
-  addProduct(product){
-    // return this.myClient.post(`https://jsonplaceholder.typicode.com/posts/`,product);
-  }
-  onFileSelected(event)
-  {
-    console.log(event);
-    this.selectedFile =<File>event.target.files[0];
-  }
-
   ngOnInit(): void {
     
   }
+  errorMsg
+  subscriber
+  res
+  newProduct
+  ////create product form
+  CreateProductForm = new FormGroup({
+    productName:new FormControl("",[
+      Validators.minLength(1),
+      Validators.maxLength(100),
+      Validators.required
+    ]),
+    desc:new FormControl("",[
+      Validators.minLength(1),
+      Validators.maxLength(500),
+    ]),
+    category:new FormControl("",[
+      Validators.minLength(1),
+      Validators.maxLength(50),
+      Validators.required
+    ]),
+    brand:new FormControl("",[
+      Validators.minLength(1),
+      Validators.maxLength(50),
+      Validators.required
+    ]),
+    numInStock:new FormControl("",[
+      Validators.required
+    ]),
+    price:new FormControl("",[
+      Validators.required
+    ]),
+    img:new FormControl(),
+  })
 
-  submit(){
-    
+  // imageFile: File = null;
+  uploadedFile
+  ////i do it manually cuz ngModel doesn't work with input[type="file"]
+  /// so i have to create my own directive
+  fileChange(element) {
+    if (element.target.files.length > 0) {
+      this.uploadedFile = element.target.files[0];
+    }
+    // console.log(this.uploadedFile)
   }
-//   onUpoad(){
-//     const fd = new FormData();
-//     fd.append('image', this.selectedFile, this.selectedFile.name);
-//     this.http.post('', fd);
-//     reportProgress: true,
-//     observe: 'events'
-//   })
-//     .subscribe(event => {
-//       if (event.type === HttpEventType.UploadProgress){
-//         console.log('Upload Progress:' + Math.round(event.loaded / event.total * 100)   + '%')
-//       }
-//       else if 
-//       (event.type === HttpEventType.Response)
-//       {
-// console.log(event);
-//       }
-//       console.log(event);
-//     }
-//     });
-//   }
+  ///submit creation form 
+  createProduct(){
+    // console.log(this.CreateProductForm.value)
+    // this.newProduct = {
+    //   name:this.CreateProductForm.value.productName,
+    //   category:this.CreateProductForm.value.category,
+    //   brand:this.CreateProductForm.value.brand,
+    //   numberInStock:this.CreateProductForm.value.numInStock,
+    //   price:this.CreateProductForm.value.price,
+    //   description:this.CreateProductForm.value.desc,
+    //   file:this.CreateProductForm.value.img,
+    //   // file:this.uploadedFiles[0]
+    // }
+    console.log(this.uploadedFile)
+    this.subscriber = this.productService.addProduct(this.CreateProductForm.value,this.uploadedFile)
+    .subscribe((response)=>{
+      this.res = response
+      if(this.res.success){
+        console.log(this.res.message) 
+
+      }
+      else{
+        this.errorMsg = this.res.message
+        console.log(this.res.message) 
+      }
+    },
+    (err)=>{
+      console.log(err)
+    })
+  }
+  ///cancel submit form
+  cancel(){
+    // this.CreateProductForm.reset()
+    this.router.navigate(['dashboard'])
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscriber)
+      this.subscriber.unsubscribe();
+  }
 }

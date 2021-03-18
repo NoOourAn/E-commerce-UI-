@@ -41,7 +41,7 @@ const routes = [
   { path: 'editproduct', component: EditProductComponent },
   { path: 'createproduct', component: CreateProductComponent },
   { path: 'dashboard', component: DashboardComponent },
-
+  { path: 'orders', component: CartComponent }
 ]
 
 @NgModule({
