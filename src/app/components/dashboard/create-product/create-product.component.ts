@@ -54,30 +54,15 @@ export class CreateProductComponent implements OnInit ,OnDestroy{
     img:new FormControl(),
   })
 
-  // imageFile: File = null;
   uploadedFile
   ////i do it manually cuz ngModel doesn't work with input[type="file"]
   /// so i have to create my own directive
   fileChange(element) {
-    if (element.target.files.length > 0) {
+    if (element.target.files.length > 0)
       this.uploadedFile = element.target.files[0];
-    }
-    // console.log(this.uploadedFile)
   }
   ///submit creation form 
   createProduct(){
-    // console.log(this.CreateProductForm.value)
-    // this.newProduct = {
-    //   name:this.CreateProductForm.value.productName,
-    //   category:this.CreateProductForm.value.category,
-    //   brand:this.CreateProductForm.value.brand,
-    //   numberInStock:this.CreateProductForm.value.numInStock,
-    //   price:this.CreateProductForm.value.price,
-    //   description:this.CreateProductForm.value.desc,
-    //   file:this.CreateProductForm.value.img,
-    //   // file:this.uploadedFiles[0]
-    // }
-    console.log(this.uploadedFile)
     this.subscriber = this.productService.addProduct(this.CreateProductForm.value,this.uploadedFile)
     .subscribe((response)=>{
       this.res = response

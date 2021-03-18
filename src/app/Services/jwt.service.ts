@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -16,23 +16,31 @@ export class JwtService {
       return this.httpClient.post('http://localhost:3000/api/users/login', {username,password});
  
   }
-   
+   user
+   err
+   succ
   register(user) {
   return this.httpClient.post('http://localhost:3000/api/users/reg', user)
   }
 
-  AllUsers(id,product){
-    return  this.httpClient.get(`http://localhost:3000/api/users/getUsers`,product)
+  AllUsers(id,user){
+    return  this.httpClient.get(`http://localhost:3000/api/users/getUsers`,user)
   }
-  myProfile(id,product){
-    return  this.httpClient.get(`http://localhost:3000/api/users/myProfile`,product)
+  myProfile(){
+    let headers = new HttpHeaders();
+    headers = headers.set('access_token', localStorage.getItem("access_token"))
+    return  this.httpClient.get(`http://localhost:3000/api/users/myProfile`,{headers:headers})
   }
-   updateUser(id,user){
-    return  this.httpClient.patch(`http://localhost:3000/api/users/profileUpdate`,user)
+   updateUser(user){
+    let headers = new HttpHeaders();
+    headers = headers.set('access_token', localStorage.getItem("access_token"))
+    return  this.httpClient.patch(`http://localhost:3000/api/users/profileUpdate`,user,{headers:headers})
   }
   
-  deleteUser(id){
-    return  this.httpClient.delete(`http://localhost:3000/api/users/profileDelete`)
+  deleteUser(){
+    let headers = new HttpHeaders();
+    headers = headers.set('access_token', localStorage.getItem("access_token"))
+    return  this.httpClient.delete(`http://localhost:3000/api/users/profileDelete`,{headers:headers})
   }
 
 

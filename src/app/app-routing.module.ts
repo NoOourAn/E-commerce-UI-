@@ -20,6 +20,7 @@ import { CartComponent } from 'src/app/components/shared/header/cart/cart.compon
 import { CreateProductComponent } from 'src/app/components/dashboard/create-product/create-product.component';
 import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashboard.component';
+import { ProductcollectionComponent } from 'src/app/components/productcollection/productcollection.component';
 
 const routes = [
   {path:'', component: HomeComponent },
@@ -37,11 +38,14 @@ const routes = [
   { path: 'buynow', component: BuyNowComponent },
   { path: 'searchresult', component: SearchresultComponent },
   { path: 'aboutus', component: AboutUsComponent },
+  { path: 'aboutus', component: AboutUsComponent },
   ///Admin Components
   { path: 'editproduct', component: EditProductComponent },
   { path: 'createproduct', component: CreateProductComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'orders', component: CartComponent }
+  { path: 'orders', component: CartComponent },
+  { path: 'products', component: ProductcollectionComponent },
+ 
 ]
 ;
 

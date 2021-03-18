@@ -24,15 +24,17 @@ export class SearchBarComponent implements OnInit {
   }
   
   search(myForm){
-    if(this.myForm.valid){
-   if (myForm.searchby == "name")
+     console.log("aho biedkhol ahoooooooooooooooooooooooooooooooooooooooooooooo")
+     console.log(myForm.value)
+   
+   if (myForm.value.searchby == "name")
    {
-    let sub =  this.ProductsService.getProductsByName(this.myForm)
+    let sub =  this.ProductsService.getProductsByName(this.myForm.value.body)
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
  this.ProductsService.productsSearch = this.prod;
- window.location.reload(); 
+ //window.location.reload(); 
  
     },
     (err)=>{
@@ -40,14 +42,14 @@ export class SearchBarComponent implements OnInit {
     })
 
    }
-   if (myForm.searchby == "category")
+   if (myForm.value.searchby == "category")
    {
-    let sub =  this.ProductsService.getProductsByCategory(this.myForm)
+    let sub =  this.ProductsService.getProductsByCategory(this.myForm.value.body)
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
  this.ProductsService.productsSearch  = this.prod;
- window.location.reload(); 
+ //window.location.reload(); 
  
     },
     (err)=>{
@@ -56,14 +58,15 @@ export class SearchBarComponent implements OnInit {
 
      
    }
-   if (myForm.searchby == "brand")
+   if (myForm.value.searchby == "brand")
    {
-    let sub =  this.ProductsService.getProductsByBrand(this.myForm)
+      console.log(this.myForm.value.body)
+    let sub =  this.ProductsService.getProductsByBrand(this.myForm.value.body)
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
  this.ProductsService.productsSearch  = this.prod;
- window.location.reload(); 
+ //window.location.reload(); 
  
     },
     (err)=>{
@@ -72,14 +75,14 @@ export class SearchBarComponent implements OnInit {
 
      
    }
-   if (myForm.searchby == "highPrice")
+   if (myForm.value.searchby == "highPrice")
    {
-    let sub =  this.ProductsService.getProductsBymaxPrice(this.myForm)
+    let sub =  this.ProductsService.getProductsBymaxPrice()
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
  this.ProductsService.productsSearch   = this.prod;
- window.location.reload(); 
+// window.location.reload(); 
  
     },
     (err)=>{
@@ -88,14 +91,14 @@ export class SearchBarComponent implements OnInit {
 
      
    }
-   if (myForm.searchby == "LowPrice")
+   if (myForm.value.searchby == "LowPrice")
    {
-    let sub =  this.ProductsService.getProductsByminPrice(this.myForm)
+    let sub =  this.ProductsService.getProductsByminPrice()
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
  this.ProductsService.productsSearch  = this.prod;
- window.location.reload(); 
+ //window.location.reload(); 
  
     },
     (err)=>{
@@ -104,27 +107,27 @@ export class SearchBarComponent implements OnInit {
 
      
    }
-   if (myForm.searchby == "NewDate")
+   if (myForm.value.searchby == "NewDate")
    {
-    let sub =  this.ProductsService.getProductsBylatestdate(this.myForm)
+    let sub =  this.ProductsService.getProductsBylatestdate()
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
  this.ProductsService.productsSearch  = this.prod;
- window.location.reload(); 
+ //window.location.reload(); 
     },
     (err)=>{
  console.log(err)
     })
    }
-   if (myForm.searchby == "OldDate")
+   if (myForm.value.searchby == "OldDate")
    {
-    let sub =  this.ProductsService.getProductsByoldestdate(this.myForm)
+    let sub =  this.ProductsService.getProductsByoldestdate()
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
  this.ProductsService.productsSearch  = this.prod;
- window.location.reload(); 
+// window.location.reload(); 
     },
     (err)=>{
  console.log(err)
@@ -134,4 +137,3 @@ export class SearchBarComponent implements OnInit {
   }
   }
 
-}

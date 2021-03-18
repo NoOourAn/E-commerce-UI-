@@ -18,7 +18,12 @@ export class HeaderComponent implements OnInit {
   home(){
 		this.route.navigate(['/']);
 	}
-
+	aboutus(){
+		this.route.navigate(['/aboutus']); 
+  }
+  products(){
+		this.route.navigate(['/products']);
+	}
   receipt(){
 		this.route.navigate(['/receipt']);
   }
