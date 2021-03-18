@@ -34,11 +34,7 @@ export class OrdereditemComponent implements OnInit {
   getProductsInCart(){
 
     if(this.cart.length!=0){
-      
-      // for(let i=0;i<this.cart.length;i++){
-
-      // }
-
+  
       this.cart.forEach(id=> {
         this.productSercice.getProductsByID(id).subscribe(res=>{
           this.response=res;
@@ -55,23 +51,12 @@ export class OrdereditemComponent implements OnInit {
 
   }
 
+
+
+
+
 }
 
-//   getProducts(){
-//     this.subscriber =  this.productSercice.getProducts()
-//    .subscribe((response)=>{
-//  console.log(response);
-//  this.products = response
-//  for(let i=0;i<this.products.length;i++){
-//    this.productsArray.push(this.products[i])
-//  }
-//  console.log( this.productsArray  );
 
-//   this.subscriber.unsubscribe();
-//    },
-//    (err)=>{
-//  console.log(err)
-//    })
-//   }
 
 
