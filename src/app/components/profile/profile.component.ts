@@ -5,6 +5,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ProductsService } from 'src/app/Services/products.service';
+import { OrdersService } from 'src/app/Services/orders.service';
+
 
 
 
@@ -15,9 +18,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class ProfileComponent implements OnInit {
 
-  
-  constructor(public JwtService:JwtService,   private modalService: NgbModal,
-    private route: Router) { }
+  constructor(public JwtService:JwtService,   private modalService: NgbModal, public OrdersService:OrdersService,
+    private router: Router) { }
     title = 'appBootstrap';
     closeResult: string;
 
@@ -41,6 +43,7 @@ export class ProfileComponent implements OnInit {
     }
 
     err
+    subscriber
 
     myForm = new FormGroup({
       username:new FormControl(``,[Validators.required,Validators.minLength(3),Validators.maxLength(100)]),
@@ -54,7 +57,7 @@ export class ProfileComponent implements OnInit {
   }
  
     editprofile(){
-      this.route.navigate(['/buynow']);
+      this.router.navigate(['/buynow']);
     }
  
 
@@ -116,12 +119,31 @@ console.log(response)
 this.user="";
 this.JwtService.user=""
 localStorage.clear;
-this.route.navigate(['/home'])
+this.router.navigate(['/home'])
 },
  (err)=>{
 console.log(err)
  })
   }
 
+  subscriber2
+  orders
+ordersArray=[]
+  getOrders(){
+    this.subscriber2 =  this.OrdersService.getOrders()
+    .subscribe((response)=>{
+  console.log(response);
+  this.orders = response
+  for(let i=0;i<this.orders.length;i++){
+    this.ordersArray.push(this.orders[i])
+  }
+  console.log( this.ordersArray ) ;
+  
+   this.subscriber2.unsubscribe();
+    },
+    (err)=>{
+  console.log(err)
+    })
+  }
 
 }

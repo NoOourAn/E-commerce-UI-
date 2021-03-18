@@ -6,7 +6,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { JwtService } from './jwt.service';
 
 
-
 @Injectable(
   {
     providedIn: 'root',
@@ -23,7 +22,7 @@ export class AuthService{
   }
 
   get isAdmin() {
-
+    this.loginAsAdmin();
     return this.admin.asObservable(); 
   }
 
@@ -52,7 +51,6 @@ export class AuthService{
 
 
   logout() {       
-                         // {4}
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
