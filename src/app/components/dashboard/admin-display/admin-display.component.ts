@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ProductsService } from 'src/app/Services/products.service';
 
@@ -7,13 +7,10 @@ import { ProductsService } from 'src/app/Services/products.service';
   templateUrl: './admin-display.component.html',
   styleUrls: ['./admin-display.component.css']
 })
-export class AdminDisplayComponent implements OnInit {
+export class AdminDisplayComponent implements OnInit,OnDestroy {
 
   constructor(private adminService:AdminService,private productService:ProductsService) { }
 
-  ngOnInit(): void {
-    this.getFlag();
-  }
   products=[]
   users=[]
   orders=[]
@@ -23,13 +20,18 @@ export class AdminDisplayComponent implements OnInit {
   ///
   flag = -1;
 
+  ngOnInit(): void {
+    this.getFlag();
+  }
+
   getFlag(){
+    console.log(this.flag)
     this.subscriber = this.adminService.flagObservable
     .subscribe((value)=>{
       this.res = value
       this.flag = this.res;
       if( this.flag == 0 ){
-        this.products;
+        this.getProducts();        
       }
       if( this.flag == 1 ){
         this.products;
@@ -49,15 +51,16 @@ export class AdminDisplayComponent implements OnInit {
    .subscribe((response)=>{
     console.log(response);
     this.res = response
-    for(let i=0;i<this.res.length;i++){
-      this.products.push(this.products[i])
-    }
-    this.subscriber.unsubscribe();
+    this.products = this.res
    },
    (err)=>{
  console.log(err)
    })
   }
 
+  ngOnDestroy(): void {
+    if(this.subscriber)
+      this.subscriber.unsubscribe();
+  }
 
 }

@@ -23,7 +23,7 @@ export class ProductsService {
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          name:name.body
+          name:name
         }
       })
   }
@@ -31,7 +31,7 @@ export class ProductsService {
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          category:category.body
+          category:category
         }
       })
   }
@@ -39,39 +39,39 @@ export class ProductsService {
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          brand:brand.body
+          brand:brand
         }
       })
   }
-  getProductsBymaxPrice(maxPrice)
+  getProductsBymaxPrice()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          maxPrice:maxPrice.body
+          maxPrice:"maxPrice"
         }
       })
   }
-  getProductsByminPrice(minPrice)
+  getProductsByminPrice()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          minPrice:minPrice.body
+          minPrice:"minPrice"
         }
       })
   }
-  getProductsBylatestdate(latestdate)
+  getProductsBylatestdate()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          latestdate:latestdate.body
+          latestdate:"latestdate"
         }
       })
   }
-  getProductsByoldestdate(oldestdate)
+  getProductsByoldestdate()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          oldestdate:oldestdate.body
+          oldestdate:"oldestdate"
         }
       })
   }
@@ -98,15 +98,12 @@ export class ProductsService {
     console.log(product)
     var formData = new FormData()
     formData.append('file',image);
-    formData.append('name',"boom");
-    formData.append('brand',"boom");
-    formData.append('category',"boom");
-    formData.append('numberInStock',"10");
-    formData.append('price',"100");
-    formData.append('description',"boom");
-
-    console.log(formData)
-    // formData {name,category,brand,numberInStock,price,description,file} = product
+    formData.append('name',product.name);
+    formData.append('brand',product.brand);
+    formData.append('category',product.category);
+    formData.append('numberInStock',product.numInStock);
+    formData.append('price',product.price);
+    formData.append('description',product.desc);
     return this.myClient.post(this.AddProduct,formData);
   }
 
