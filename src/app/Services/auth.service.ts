@@ -17,7 +17,8 @@ export class AuthService{
   private loggedIn = new BehaviorSubject<boolean>(false); 
   private admin = new BehaviorSubject<boolean>(false); 
   get isLoggedIn() {
-
+    this.login()
+    console.log(this.loggedIn);
     return this.loggedIn.asObservable(); 
   }
 
@@ -31,15 +32,16 @@ export class AuthService{
 ) {}
   
   login(){
+  
     if (this.jwtService.loggedIn ) {
       this.loggedIn.next(true);
-      
+    
     }
   }
 
   loginAsAdmin(){
     if (this.jwtService.admin ) {
-      this.loggedIn.next(true);
+      this.admin.next(true);
       
     }
   }
