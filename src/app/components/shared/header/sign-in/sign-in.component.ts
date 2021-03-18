@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JwtService } from 'src/app/Services/jwt.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,7 +19,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private fb: FormBuilder,         // {3}
     private authService: AuthService,
-    private jwtService:JwtService
+    private jwtService:JwtService,
+    private route:Router
     // {4}
   ) {}
 
@@ -48,6 +50,7 @@ export class SignInComponent implements OnInit {
               console.log(this.response.token);
              localStorage.setItem('access_token', this.response.token);
              this.authService.login();
+             this.route.navigate(['/profile']);
 
             }else{
               console.log(this.response.message);
