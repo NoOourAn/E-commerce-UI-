@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {JwtService} from 'src/app/services/jwt.service'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {Router} from '@angular/router';
+
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ProductsService } from 'src/app/Services/products.service';
 import { OrdersService } from 'src/app/Services/orders.service';
@@ -54,6 +55,11 @@ export class ProfileComponent implements OnInit {
     console.log(localStorage.getItem("access_token"))
     this.getMyProfile();
   }
+ 
+    editprofile(){
+      this.router.navigate(['/buynow']);
+    }
+ 
 
   getMyProfile(){
     let sub =  this.JwtService.myProfile()

@@ -23,8 +23,8 @@ export class JwtService {
   return this.httpClient.post('http://localhost:3000/api/users/reg', user)
   }
 
-  AllUsers(id,user){
-    return  this.httpClient.get(`http://localhost:3000/api/users/getUsers`,user)
+  AllUsers(){
+    return  this.httpClient.get(`http://localhost:3000/api/users/getUsers`)
   }
   myProfile(){
     let headers = new HttpHeaders();
@@ -50,6 +50,8 @@ logout() {
 public get loggedIn(): boolean{
   return localStorage.getItem('access_token') !==  null;
 }
-
+public get admin(): boolean{
+  return localStorage.getItem('admin') !==  null;
+}
 }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { AdminService } from 'src/app/Services/admin.service';
+import { JwtService } from 'src/app/Services/jwt.service';
+import { OrdersService } from 'src/app/Services/orders.service';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class AdminDisplayComponent implements OnInit,OnDestroy {
 
-  constructor(private adminService:AdminService,private productService:ProductsService) { }
+  constructor(private adminService:AdminService,private productService:ProductsService,private orderService:OrdersService,private userService:JwtService) { }
 
   products=[]
   users=[]
@@ -34,10 +36,10 @@ export class AdminDisplayComponent implements OnInit,OnDestroy {
         this.getProducts();        
       }
       if( this.flag == 1 ){
-        this.products;
+        this.getOrders();
       }
       if( this.flag == 2 ){
-        this.products;
+        this.getUsers();
       }
       
     },
@@ -56,6 +58,32 @@ export class AdminDisplayComponent implements OnInit,OnDestroy {
    (err)=>{
  console.log(err)
    })
+  }
+
+  /////get orders
+  getOrders(){
+    this.subscriber =  this.orderService.getOrders()
+   .subscribe((response)=>{
+    console.log(response);
+    this.res = response
+    this.orders = this.res
+    console.log(this.orders)
+   },
+   (err)=>{
+    console.log(err)
+   })
+  }
+
+  /////get users
+  getUsers(){
+    this.subscriber =  this.userService.AllUsers()
+    .subscribe((response)=>{
+    this.res = response
+    this.users = this.res
+    },
+    (err)=>{
+    console.log(err)
+    })
   }
 
   ngOnDestroy(): void {
