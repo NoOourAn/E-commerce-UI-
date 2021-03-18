@@ -23,7 +23,7 @@ export class ProductsService {
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          name:name.body
+          name:name
         }
       })
   }
@@ -31,7 +31,7 @@ export class ProductsService {
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          category:category.body
+          category:category
         }
       })
   }
@@ -39,39 +39,39 @@ export class ProductsService {
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          brand:brand.body
+          brand:brand
         }
       })
   }
-  getProductsBymaxPrice(maxPrice)
+  getProductsBymaxPrice()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          maxPrice:maxPrice.body
+          maxPrice:"maxPrice"
         }
       })
   }
-  getProductsByminPrice(minPrice)
+  getProductsByminPrice()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          minPrice:minPrice.body
+          minPrice:"minPrice"
         }
       })
   }
-  getProductsBylatestdate(latestdate)
+  getProductsBylatestdate()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          latestdate:latestdate.body
+          latestdate:"latestdate"
         }
       })
   }
-  getProductsByoldestdate(oldestdate)
+  getProductsByoldestdate()
   {
     return this.myClient.get(this.GetProducts,{
         params:{
-          oldestdate:oldestdate.body
+          oldestdate:"oldestdate"
         }
       })
   }
