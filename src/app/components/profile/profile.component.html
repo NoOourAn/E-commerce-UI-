@@ -7,21 +7,19 @@
     <div class="alert alert-danger"  *ngIf="this.JwtService.err">{{this.JwtService.err}}</div>
     <div class="alert alert-success"  *ngIf="this.JwtService.succ">{{this.JwtService.succ}}</div>
 
-    <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
                     <div class="file btn btn-lg btn-primary">
                         Change Photo
-                        <!-- <UploadimageComponent></UploadimageComponent> -->
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-{{user.username}}
+                    {{user.username}}
                     </h5>
                     <h6>
                         {{user.email}}
@@ -78,7 +76,6 @@
     
                 </div>
             </div>
-    </form>
 </div>
 <br>
 <br>
