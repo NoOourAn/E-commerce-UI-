@@ -1,5 +1,5 @@
 <div class="main-block" [ngSwitch]="flag"> 
-  
+
   <!-- products -->
   <div *ngSwitchCase="0">
     <table class="table table-borderless table-striped table-earning">
@@ -26,7 +26,7 @@
   
       </tbody>
       </table>
-      <button class="btn btn-primary">Add New Product</button>
+      <button class="btn btn-primary" routerLink="/createproduct">Add New Product</button>
   </div>
 
 
@@ -55,7 +55,6 @@
   
       </tbody>
       </table>
-      <button class="btn btn-primary">Add New Order</button>
       </div>
 
       <!-- users -->
@@ -77,6 +76,12 @@
         </tr>
         </tbody>
         </table>
+        </div>
+
+        <div *ngSwitchCase="-1">
+          <div class="alert alert-danger text-center">
+            No Data available
+          </div>
         </div>
 
 </div>
@@ -170,8 +175,8 @@
 </ng-template>  
 
 
-<ng-template #noData>
+<!-- <ng-template #noData>
   <div class="alert-danger">
     No Data available
   </div>
-</ng-template> 
+</ng-template>  -->

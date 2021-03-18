@@ -3,8 +3,9 @@
     height: 80px;
     background: -webkit-linear-gradient(left, #0072ff, #8811c5);
     color: #fff;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 80px;
+    font-size: 30px;
 }
 
 .form-content {
@@ -13,16 +14,33 @@
     margin-bottom: 2%;
 }
 
-.form-control {
-    border-radius: 1.5rem;
+.form-group label{
+    margin-right: 20px;
+}
+
+.form-group input:not([type=radio]){
+    width: calc(100% - 57px);
+    height: 36px;
+    margin: 10px 0 15px -5px;
+    padding-left: 10px; 
+    border-radius: 5px;
+    border: solid 1px #cbc9c9; 
+    box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+    background: #fff; 
+    outline: none;
+    color: #282224;
+}
+.form-group input[type=radio]{
+    display: inline-block;
+    margin: 10px;
 }
 
 .btnSubmit {
     border: none;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     padding: 1%;
+    margin: 5px;
     width: 20%;
-    cursor: pointer;
-    background: #0062cc;
+    background: #2794B5;
     color: #fff;
 }
