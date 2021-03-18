@@ -39,6 +39,7 @@ import { AdminControlsComponent } from './components/dashboard/admin-controls/ad
 import { AdminDisplayComponent } from './components/dashboard/admin-display/admin-display.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { AdminService } from './Services/admin.service';
+import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
  //import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { AdminService } from './Services/admin.service';
     CartComponent,
     AdminControlsComponent,
     AdminDisplayComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductdetailsComponent
   ],
   imports: [
     BrowserModule,

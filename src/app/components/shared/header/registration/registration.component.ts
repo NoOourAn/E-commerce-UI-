@@ -36,7 +36,7 @@ submit(){
         this.response=res
         if(this.response.success){
           alert("you register successfully");
-          this.route.navigate(['/profile']);
+         this.route.navigate(['/home']);
 
         }else{
           alert(this.response.message);
