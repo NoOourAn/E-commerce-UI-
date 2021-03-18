@@ -98,15 +98,12 @@ export class ProductsService {
     console.log(product)
     var formData = new FormData()
     formData.append('file',image);
-    formData.append('name',"boom");
-    formData.append('brand',"boom");
-    formData.append('category',"boom");
-    formData.append('numberInStock',"10");
-    formData.append('price',"100");
-    formData.append('description',"boom");
-
-    console.log(formData)
-    // formData {name,category,brand,numberInStock,price,description,file} = product
+    formData.append('name',product.name);
+    formData.append('brand',product.brand);
+    formData.append('category',product.category);
+    formData.append('numberInStock',product.numInStock);
+    formData.append('price',product.price);
+    formData.append('description',product.desc);
     return this.myClient.post(this.AddProduct,formData);
   }
 
