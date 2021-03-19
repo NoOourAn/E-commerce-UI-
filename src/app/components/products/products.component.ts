@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/Services/products.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit,OnDestroy {
 
   products
   subscriber
@@ -19,12 +19,15 @@ export class ProductsComponent implements OnInit {
   // authorization
   isLoggedIn: Observable<boolean>;
 
-  constructor(private productSercice:ProductsService,private authService: AuthService,private cartService:CartService ){
-  }
-  ngOnInit(): void {
+  constructor(
+    private productSercice:ProductsService,
+    private authService: AuthService,
+    private cartService:CartService 
+    )
+    {}
 
+  ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;
-    console.log("start")
     this.getProducts();
     }
     onLogout(){
@@ -33,26 +36,24 @@ export class ProductsComponent implements OnInit {
     getProducts(){
       this.subscriber =  this.productSercice.getProducts()
      .subscribe((response)=>{
-   console.log(response);
-   this.products = response
-   for(let i=0;i<this.products.length;i++){
-     this.productsArray.push(this.products[i])
-   }
-   console.log( this.productsArray  );
-
-    this.subscriber.unsubscribe();
+        //  console.log(response);
+        this.products = response
+        this.productsArray = this.products.products
+        //  for(let i=0;i<this.products.length;i++){
+        //    this.productsArray.push(this.products[i])
+        //  }
+        console.log(this.productsArray);
      },
      (err)=>{
-   console.log(err)
+        console.log(err)
      })
     }
-      // add porduct to cart
-    addTocart(id){
-      console.log(id);
-       this.cartService.addTocart(id)
-    }
-  
-
- 
-
+  // add porduct to cart
+  addTocart(id){
+    this.cartService.addTocart(id)
+  }
+  ngOnDestroy(): void {
+    if(this.subscriber)
+      this.subscriber.unsubscribe();
+  }
 }

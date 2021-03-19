@@ -43,8 +43,6 @@ submit(){
         }
       
       })
-    
-
   } else {
      alert('User form is not valid!!')
     console.log(this.userForm)
