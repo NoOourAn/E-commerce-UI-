@@ -44,10 +44,6 @@ export class AuthService{
     }
   }
 
-  register(user){
-   return this.jwtService.register(user)
-  }
-
 
   logout() {       
     this.loggedIn.next(false);
