@@ -41,7 +41,6 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
 import { AdminService } from './Services/admin.service';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { ProductcollectionComponent } from 'src/app/components/productcollection/productcollection.component';
  //import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -76,7 +75,6 @@ import { ProductcollectionComponent } from 'src/app/components/productcollection
     DashboardComponent,
     ProductdetailsComponent,
     EditProfileComponent,
-    ProductcollectionComponent
   ],
   imports: [
     BrowserModule,

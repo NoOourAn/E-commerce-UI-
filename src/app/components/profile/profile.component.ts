@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {JwtService} from 'src/app/services/jwt.service'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -16,10 +16,16 @@ import { OrdersService } from 'src/app/Services/orders.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit,OnDestroy {
 
   constructor(public JwtService:JwtService,   private modalService: NgbModal, public OrdersService:OrdersService,
     private router: Router) { }
+  ngOnDestroy(): void {
+    if(this.subscriber)
+      this.subscriber.unsubscribe();
+    if(this.subscriber2)
+      this.subscriber2.unsubscribe();
+  }
     title = 'appBootstrap';
     closeResult: string;
 
@@ -44,6 +50,7 @@ export class ProfileComponent implements OnInit {
 
     err
     subscriber
+    res
 
     myForm = new FormGroup({
       username:new FormControl(``,[Validators.required,Validators.minLength(3),Validators.maxLength(100)]),
@@ -57,18 +64,14 @@ export class ProfileComponent implements OnInit {
     this.getOrders();
   }
  
-    editprofile(){
-      this.router.navigate(['/buynow']);
-    }
- 
+ y
 
   getMyProfile(){
     let sub =  this.JwtService.myProfile()
     .subscribe((response)=>{
- console.log(response)
- this.user=response;
- this.JwtService.user  = this.user; 
- console.log(this.user)
+    this.res=response;
+    this.user = this.res.user
+    this.JwtService.user  = this.user; 
 
     },
     (err)=>{
@@ -81,18 +84,18 @@ export class ProfileComponent implements OnInit {
     let sub =  this.JwtService.updateUser(this.myForm.value)
     .subscribe((response)=>{
  console.log(response)
- this.user=response;
- if(this.user.message)
+ this.res=response;
+ if(this.res.success)
  {
   this.getMyProfile();
-   this.JwtService.err=this.user.message
+   this.JwtService.err=this.res.message
    this.JwtService.succ=""
 //   window.location.reload(); 
 
  }
  else{
   this.getMyProfile();
-  this.JwtService.user  = this.user; 
+  this.JwtService.user  = this.res.user; 
   this.JwtService.succ = "your information has been updated Succ";
   this.JwtService.err=""
 
@@ -102,7 +105,6 @@ export class ProfileComponent implements OnInit {
     (err)=>{
  console.log(err)
     })
-console.log(this.user)
   }
 
   setDefault() {
@@ -115,12 +117,12 @@ console.log(this.user)
 
   deleteUser(){
     let sub =  this.JwtService.deleteUser()
- .subscribe((response)=>{
-console.log(response)
-this.user="";
-this.JwtService.user=""
-localStorage.clear;
-this.router.navigate(['/home'])
+    .subscribe((response)=>{
+    console.log(response)
+    this.user="";
+    this.JwtService.user=""
+    localStorage.clear;
+    this.router.navigate(['/home'])
 },
  (err)=>{
 console.log(err)
@@ -133,14 +135,12 @@ ordersArray=[]
   getOrders(){
     this.subscriber2 =  this.OrdersService.getOrders()
     .subscribe((response)=>{
-  console.log(response);
-  this.orders = response
-  for(let i=0;i<this.orders.length;i++){
-    this.ordersArray.push(this.orders[i])
-  }
-  console.log( this.ordersArray ) ;
+    this.res = response
   
-   this.subscriber2.unsubscribe();
+    this.orders = this.res.orders
+    this.ordersArray = this.orders
+
+
     },
     (err)=>{
   console.log(err)

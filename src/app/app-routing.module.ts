@@ -19,9 +19,9 @@ import { CartComponent } from 'src/app/components/shared/header/cart/cart.compon
 import { CreateProductComponent } from 'src/app/components/dashboard/create-product/create-product.component';
 import { EditProductComponent } from 'src/app/components/dashboard/edit-product/edit-product.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashboard.component';
-import { ProductcollectionComponent } from 'src/app/components/productcollection/productcollection.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 
 const routes = [
   {path:'', component: HomeComponent },
@@ -29,24 +29,27 @@ const routes = [
   {path:'login',component:SignInComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'signin', component:SignInComponent},
-  {path:'receipt', component:receiptComponent },
+  {path:'receipt', component:receiptComponent,canActivate: [AuthGuard] },
   { path:'search', component:SearchBarComponent },
   { path: 'home', component: HomeComponent},
   { path: 'blog', component: BlogComponent },
   { path: 'readmore', component: ReadMoreComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'profile', component: ProfileComponent,},//canActivate: [AuthGuard]
+  { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},//canActivate: [AuthGuard]
   { path: 'buynow', component: BuyNowComponent },
   { path: 'searchresult', component: SearchresultComponent },
   { path: 'aboutus', component: AboutUsComponent },
+<<<<<<< HEAD
   { path: 'aboutus', component: AboutUsComponent },
+  { path: 'products/:id', component:ProductdetailsComponent },
+
+=======
+>>>>>>> 946ffaecc80810b7a432cae48da51465190dada5
   ///Admin Components
-  { path: 'editproduct', component: EditProductComponent },
-  { path: 'createproduct', component: CreateProductComponent },
+  { path: 'editproduct', component: EditProductComponent ,canActivate: [AuthGuard,AdminGuard]},
+  { path: 'createproduct', component: CreateProductComponent,canActivate: [AuthGuard,AdminGuard] },
   { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard,AdminGuard] },
-  { path: 'orders', component: CartComponent },
-  { path: 'products', component: ProductcollectionComponent },
- 
+  { path: 'orders', component: CartComponent }, 
 ]
 ;
 

@@ -47,10 +47,6 @@ export class SignInComponent implements OnInit {
             this.response=res
             console.log(this.response.success);
             if(this.response.success){
-              console.log(this.response.token);
-              console.log(this.response.user);
-              console.log(this.response.user.username);
-
              localStorage.setItem('access_token', this.response.token);
             if(this.response.user.username=="admin"){
               localStorage.setItem('admin',"true");

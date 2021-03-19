@@ -67,7 +67,6 @@ export class CreateProductComponent implements OnInit ,OnDestroy{
     .subscribe((response)=>{
       this.res = response
       if(this.res.success){
-        console.log(this.res.message) 
         this.CreateProductForm.reset()
         this.router.navigate(['dashboard'])
       }

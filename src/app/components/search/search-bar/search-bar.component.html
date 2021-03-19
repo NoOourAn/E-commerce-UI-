@@ -38,7 +38,7 @@
                     <h4 class="card-title">{{product.name}}</h4>
                     <h6 class="card-subtitle mb-2 text-muted">{{product.category}}</h6>
                     <div class="card-body text-center">
-                        <app-rating-events></app-rating-events>
+                        <!-- <app-rating-events></app-rating-events> -->
                         <hr>
                         <h6 class="mb-3">
                             <span class="text-danger mr-1">{{product.brand}}</span>
@@ -46,10 +46,11 @@
                         </h6>
 
                         <button type="button" class="btn btn-danger btn-sm mr-1 mb-2">
-                         <i class="fa fa-shopping-cart pr-2"><a  routerlinkactive="text-danger" routerlink="addtocart"> Add to cart</a></i>
-                        </button>
+                            <button type="button" class="btn btn-danger btn-sm mr-1 mb-2" (click)="addTocart(product._id)">
+                                <i class="fa fa-shopping-cart pr-2"><a  routerlinkactive="text-danger" > Add to cart</a></i>
+                               </button>                        </button>
                         <button type="button" class="btn btn-light btn-sm mr-1 mb-2">
-                          <i class="fa fa-info-circle pr-2"><a  routerlink="/Details" >Details</a></i>
+                            <i class="fa fa-info-circle pr-2"><a (click)="getSpecificProductById(product._id)" >Details</a></i>
                         </button>
                     </div>
                 </div>

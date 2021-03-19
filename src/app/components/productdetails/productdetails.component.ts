@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/Services/products.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-productdetails',
@@ -7,16 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductdetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor( public productSercice:ProductsService, private myActivatedRoute:ActivatedRoute ,) { }
 
   ngOnInit(): void {
-  }
-  // $(document).{ready(function () {
-  //   // MDB Lightbox Init
-  //   $(function () {
-  //     $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-  //   });
-  // });
-  
+this.getSpecificProductById(this.myActivatedRoute.snapshot.params.id)  }
 
+  
+  Pid
+  getSpecificProductById(id){
+    let sub =  this.productSercice.getProductsByID2(id)
+    .subscribe((response)=>{
+  console.log(response)
+  this.Pid=response;
+  this.productSercice.productDetail  = this.Pid;
+    },
+    (err)=>{
+  console.log(err)
+    })
+  }
+  
 }
