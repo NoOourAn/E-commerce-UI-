@@ -1,4 +1,6 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminService } from 'src/app/Services/admin.service';
 import { JwtService } from 'src/app/Services/jwt.service';
 import { OrdersService } from 'src/app/Services/orders.service';
@@ -11,7 +13,13 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class AdminDisplayComponent implements OnInit,OnDestroy {
 
-  constructor(private adminService:AdminService,private productService:ProductsService,private orderService:OrdersService,private userService:JwtService) { }
+  constructor(
+    private adminService:AdminService,
+    private productService:ProductsService,
+    private orderService:OrdersService,
+    private userService:JwtService,
+    private modalService: NgbModal
+    ) { }
 
   products=[]
   users=[]
@@ -20,18 +28,22 @@ export class AdminDisplayComponent implements OnInit,OnDestroy {
   subscriber
   res
   ///
-  flag = -1;
+  flag
+  ///error
+  errorMsg
+  successMsg
 
   ngOnInit(): void {
+    this.flag = -1
     this.getFlag();
   }
 
   getFlag(){
-    console.log(this.flag)
     this.subscriber = this.adminService.flagObservable
     .subscribe((value)=>{
       this.res = value
-      this.flag = this.res;
+      ///not working
+      this.flag = (this.res) ? this.res : 0;
       if( this.flag == 0 ){
         this.getProducts();        
       }
@@ -51,9 +63,12 @@ export class AdminDisplayComponent implements OnInit,OnDestroy {
   getProducts(){
     this.subscriber =  this.productService.getProducts()
    .subscribe((response)=>{
-    console.log(response);
     this.res = response
-    this.products = this.res
+    console.log(this.res.products)
+    if(this.res.success)
+      this.products = this.res.products
+    else
+      this.errorMsg = this.res.message
    },
    (err)=>{
  console.log(err)
@@ -64,10 +79,11 @@ export class AdminDisplayComponent implements OnInit,OnDestroy {
   getOrders(){
     this.subscriber =  this.orderService.getOrders()
    .subscribe((response)=>{
-    console.log(response);
     this.res = response
-    this.orders = this.res
-    console.log(this.orders)
+    if(this.res.success)
+      this.orders = this.res.orders
+    else
+      this.errorMsg = this.res.message
    },
    (err)=>{
     console.log(err)
@@ -79,12 +95,92 @@ export class AdminDisplayComponent implements OnInit,OnDestroy {
     this.subscriber =  this.userService.AllUsers()
     .subscribe((response)=>{
     this.res = response
-    this.users = this.res
+    if(this.res.success)
+      this.users = this.res.users
+    else
+      this.errorMsg = this.res.message
     },
     (err)=>{
     console.log(err)
     })
   }
+
+  ///delete product
+  deleteProduct(id){
+    this.productService.deleteProduct(id)
+    .subscribe((response)=>{
+      this.res = response
+      if(this.res.success){
+        this.getProducts()
+        this.successMsg = this.res.message
+      }
+      else
+        this.errorMsg = this.res.message
+    },
+    (err)=>{
+      console.log(err)
+    })
+  }
+  ////delete order
+  deleteOrder(id){
+    this.orderService.deleteOrder(id)
+    .subscribe((response)=>{
+      this.res = response
+      if(this.res.success){
+        this.getOrders()
+        this.successMsg = this.res.message
+      }
+      else
+        this.errorMsg = this.res.message
+    },
+    (err)=>{
+      console.log(err)
+    })
+  }
+
+  
+  ///update product
+  updateProduct(id){
+
+  }
+
+    ///change status modal
+    closeResult = '';
+    openEditStatusModal(content,id) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        ///if he hit submit
+        this.updateOrderState(id);
+      }, (reason) => {
+        ///if he hit anything else
+        console.log("closed:",reason)
+      });
+    }
+
+
+    ////change status form
+    ChangeStatusForm = new FormGroup({
+      status:new FormControl("pending",[
+        Validators.required
+      ])
+    })
+  ///update order state
+  updateOrderState(id){
+    // console.log(id)
+    // console.log(this.ChangeStatusForm.value.status)
+    this.orderService.modifyOrderStatus(id,this.ChangeStatusForm.value.status)
+    .subscribe((response)=>{
+      this.res = response
+      if(this.res.success)
+        this.getOrders()
+      else
+        this.errorMsg = this.res.message
+    },
+    (err)=>{
+      console.log(err)
+    })
+  }
+
+
 
   ngOnDestroy(): void {
     if(this.subscriber)

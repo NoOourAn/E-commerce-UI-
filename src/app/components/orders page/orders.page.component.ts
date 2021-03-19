@@ -18,6 +18,7 @@ export class OrdersComponent implements OnInit {
   response;
   totalPrice=0;
   orderProducts=[];  
+  products=[]
 
 
 
@@ -33,10 +34,10 @@ export class OrdersComponent implements OnInit {
       this.cart.forEach(id=> {
       this.productSercice.getProductsByID(id).subscribe(res=>{
         this.response=res;
-        console.log(this.response[0].price);
-        this.totalPrice+=this.response[0].price;
-        console.log(this.totalPrice);
-        this.productsArray.push(this.response[0]);
+        console.log(this.response)
+        this.products = this.response.products
+        this.totalPrice+=this.products[0].price;
+        this.productsArray.push(this.products[0]);
       })
     });
     console.log("total price",this.totalPrice);

@@ -1,5 +1,13 @@
 <div class="main-block" [ngSwitch]="flag"> 
 
+  <div *ngIf="errorMsg" class="alert alert-danger text-center">
+    {{ errorMsg }}
+  </div>
+
+  <div *ngIf="successMsg" class="alert alert-success text-center">
+    {{ successMsg }}
+  </div>
+
   <!-- products -->
   <div *ngSwitchCase="0" style="overflow-y:auto">
     <div *ngIf="products.length>0;else noData">
@@ -12,6 +20,10 @@
         <th>Brand</th>
         <th>Number In Stock</th>
         <th>Price</th>
+        <th>Image</th>
+        <th></th>
+        <th></th>
+
         </tr>
         </thead>
         <tbody>
@@ -23,6 +35,15 @@
           <td>{{ product.brand }}</td>
           <td>{{ product.numberInStock }}</td>
           <td>{{ product.price }}</td>
+          <td *ngIf="product.imgUrl;else notExist">
+            <a [href]="product.imgUrl">Img</a>
+          </td>
+          <td>
+            <button class="btn" (click)="updateProduct(product._id)">Edit</button>
+          </td>
+          <td>
+            <button class="btn" (click)="deleteProduct(product._id)">Delete</button>
+          </td>
         </tr>
     
         </tbody>
@@ -44,6 +65,8 @@
           <th>Total Price</th>
           <th>Status</th>
           <th>Products</th>
+          <th></th>
+          <th></th>
           </tr>
           </thead>
           <tbody>
@@ -53,7 +76,17 @@
             <td>{{ order.PlacedDate }}</td>
             <td>{{ order.totalPrice }}</td>
             <td>{{ order.status }}</td>
-            <td *ngFor="let product of order.products">{{ product.productName }} X {{ product.quantity }}</td>
+            <td>
+              <p *ngFor="let product of order.products">
+                {{ product.productName }} X {{ product.quantity }}
+              </p>
+            </td>
+            <td>
+              <button class="btn" (click)="openEditStatusModal(changeStatus,order._id)">Edit</button>
+            </td>
+            <td>
+              <button class="btn" (click)="deleteOrder(order._id)">Delete</button>
+            </td>
           </tr>
       
           </tbody>
@@ -71,6 +104,7 @@
             <th>Username</th>
             <th>Email</th>
             <th>Created At</th>
+            <!-- <th>Image</th> -->
             </tr>
             </thead>
             <tbody>
@@ -78,6 +112,9 @@
               <td>{{ user.username }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.createdAt }}</td>
+              <!-- <td *ngIf="user.imgUrl;else notExist">
+                <a [href]="user.imgUrl">Img</a>
+              </td> -->
             </tr>
             </tbody>
             </table>
@@ -102,3 +139,32 @@
     No Data available
   </div>
 </ng-template>  
+
+<!-- Change Order Status   -->
+<ng-template #changeStatus let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Status</h4>
+    <button class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+  </div>
+  <form [formGroup]="ChangeStatusForm">
+    <div class="modal-body">
+        <div class="form-group">
+            <!-- product change status -->
+            <label for="status">Choose Order Status:</label>
+            <select class="form-select" formControlName="status" name="status">
+                <option  disabled>Choose Order Status</option>
+                <option  value="pending" selected>Pending</option>
+                <option  value="rejected">Rejected</option>
+                <option  value="accepted">Accepted</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn" (click)="modal.close()">Change</button>
+    </div>
+  </form>
+
+</ng-template>

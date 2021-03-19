@@ -2,7 +2,6 @@ import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, of } from 'rxjs';
 import {HttpClient } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
 import { JwtService } from './jwt.service';
 
 
