@@ -10,7 +10,7 @@ export class BgReviewComponent implements OnInit {
   constructor(private route:Router){} 
   
   buynow(){
-  this.route.navigate(['/buynow']);
+  this.route.navigate(['/products']);
 }
 
   ngOnInit(): void {

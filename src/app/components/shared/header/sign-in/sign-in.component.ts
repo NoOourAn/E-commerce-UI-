@@ -64,6 +64,7 @@ export class SignInComponent implements OnInit {
            this.authService.login();
              
            this.route.navigate(['/home']);
+           window.location.reload();
             }else{
               console.log(this.response.message);
               alert(this.response.message)
