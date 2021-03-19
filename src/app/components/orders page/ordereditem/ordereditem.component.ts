@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 //import {Router} from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/Services/products.service';
@@ -12,6 +12,7 @@ export class OrdereditemComponent implements OnInit {
   
   // cart:any;
   @Input() productsArray =[];
+  @Output("removed") removed= new EventEmitter
   // response
   // totalPrice=0
   // order={"totalPrice":this.totalPrice,"products":[{"productName":"this product name from reciet","quantity":"10"}]}
@@ -20,6 +21,10 @@ export class OrdereditemComponent implements OnInit {
   ngOnInit(): void {
    console.log(this.productsArray);
     
+  }
+  remove(id){
+    console.log(id)
+    this.removed.emit(id);
   }
 
 

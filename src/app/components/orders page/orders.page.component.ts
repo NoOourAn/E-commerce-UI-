@@ -19,7 +19,7 @@ export class OrdersComponent implements OnInit {
   totalPrice=0;
   orderProducts=[];  
 
-mycart={"totalPrice":"10","products":[{"productName":"this product name from reciet","quantity":"10"}]}
+
 
   constructor(private route:Router,private orderService:OrdersService,private cartService:CartService,private productSercice:ProductsService){} 
   ngOnInit(): void {
@@ -28,6 +28,8 @@ mycart={"totalPrice":"10","products":[{"productName":"this product name from rec
   }
   getProductsInCart() {
     if(this.cart.length!=0){
+      console.log(this.cart);
+      this.productsArray=[];
       this.cart.forEach(id=> {
       this.productSercice.getProductsByID(id).subscribe(res=>{
         this.response=res;
@@ -39,6 +41,7 @@ mycart={"totalPrice":"10","products":[{"productName":"this product name from rec
     });
     console.log("total price",this.totalPrice);
     console.log(this.productsArray);
+    this.orderService.setCart(this.productsArray);
   }
   }
   fillCartArray() {
@@ -56,19 +59,18 @@ mycart={"totalPrice":"10","products":[{"productName":"this product name from rec
       console.log(this.orderProducts);
 
     this.orderService.createOrders({totalPrice:this.totalPrice,"products":this.orderProducts}).subscribe(res=>{
-      console.log(res);
+      this.response=res
+      console.log(this.response);
+      this.orderService.setOrder(this.response);
     })
   }
   
-    // order={"totalPrice":this.totalPrice,"products":[{"productName":"this product name from reciet","quantity":"10"}]}
+  onRemove(id){
+    console.log(id);
+  this.cartService.removeFromCart(id);
+  this.fillCartArray()
+  this.getProductsInCart();
+   
+  } 
 
-  
-
-  // this..createOrders(this.mycart).subscribe(res=>{
-  //     console.log(res);
-  //   });
-		// this.route.navigate(['/receipt']);
-  // }
 }
-
-

@@ -9,7 +9,7 @@
     <div class="row">
         <!--Grid column-->
         <div class="col-lg-8">
-            <app-ordereditem [productsArray]="productsArray"></app-ordereditem>
+            <app-ordereditem [productsArray]="productsArray" (removed)="onRemove($event)"></app-ordereditem>
             <!-- Card -->
             <!-- <div class="card wish-list mb-3">
                 <div class="card-body">
@@ -160,7 +160,7 @@
             </div>
             <!-- Card -->
 
-           
+
         </div>
         <!--Grid column-->
 

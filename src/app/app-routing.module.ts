@@ -21,6 +21,7 @@ import { EditProductComponent } from 'src/app/components/dashboard/edit-product/
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashboard.component';
 import { ProductcollectionComponent } from 'src/app/components/productcollection/productcollection.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes = [
   {path:'', component: HomeComponent },
@@ -42,7 +43,7 @@ const routes = [
   ///Admin Components
   { path: 'editproduct', component: EditProductComponent },
   { path: 'createproduct', component: CreateProductComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard,AdminGuard] },
   { path: 'orders', component: CartComponent },
   { path: 'products', component: ProductcollectionComponent },
  
