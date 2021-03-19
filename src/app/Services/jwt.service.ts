@@ -54,6 +54,11 @@ export class JwtService {
 
 logout() {
   localStorage.removeItem('access_token');
+  if(localStorage.getItem('admin')){
+
+    localStorage.removeItem('admin');
+  }
+  window.location.reload();
 }
 public get loggedIn(): boolean{
   return localStorage.getItem('access_token') !==  null;

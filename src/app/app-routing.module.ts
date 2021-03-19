@@ -39,12 +39,9 @@ const routes = [
   { path: 'buynow', component: BuyNowComponent },
   { path: 'searchresult', component: SearchresultComponent },
   { path: 'aboutus', component: AboutUsComponent },
-<<<<<<< HEAD
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'products/:id', component:ProductdetailsComponent },
 
-=======
->>>>>>> 946ffaecc80810b7a432cae48da51465190dada5
   ///Admin Components
   { path: 'editproduct', component: EditProductComponent ,canActivate: [AuthGuard,AdminGuard]},
   { path: 'createproduct', component: CreateProductComponent,canActivate: [AuthGuard,AdminGuard] },
