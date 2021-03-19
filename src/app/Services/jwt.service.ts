@@ -19,8 +19,16 @@ export class JwtService {
    user
    err
    succ
-  register(user) {
-  return this.httpClient.post('http://localhost:3000/api/users/reg', user)
+  register(user,image) {
+    console.log(user)
+    var formData = new FormData()
+    formData.append('file',image);
+    formData.append('username',user.username);
+    formData.append('email',user.email);
+    formData.append('password',user.password);
+    formData.append('gender',user.gender);
+
+    return this.httpClient.post('http://localhost:3000/api/users/reg', formData)
   }
 
   AllUsers(){

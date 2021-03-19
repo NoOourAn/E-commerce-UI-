@@ -20,7 +20,7 @@
 
 .form-group input:not([type=radio]){
     width: calc(100% - 57px);
-    height: 36px;
+    height: 42px;
     margin: 10px 0 15px -5px;
     padding-left: 10px; 
     border-radius: 5px;

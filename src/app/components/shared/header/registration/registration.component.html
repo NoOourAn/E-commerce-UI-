@@ -8,6 +8,15 @@
             <div class="form-content">
                 <div class="form-row">
                     <div class="col-md-6">
+                                                
+                        <div *ngIf="errorMsg" class="alert alert-danger text-center">
+                            {{ errorMsg }}
+                        </div>
+
+                        <div *ngIf="successMsg" class="alert alert-success text-center">
+                            {{ successMsg }}
+                        </div>
+
                         <div class="form-group">
                             <input type="text" class="form-control" id="defaultRegisterFormUserName" placeholder="user name *" formControlName="username" value="" required/>
                             <p *ngIf="userForm.controls.username.errors&&userForm.controls.username.touched" class="alert alert-danger">
@@ -23,7 +32,7 @@
 
                             </p>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <input type="text" class="form-control" formControlName="firstName" id="defaultRegisterFormFirstName" placeholder="First name" value="" required />
                             <p *ngIf="userForm.controls.firstName.errors&&userForm.controls.firstName.touched" class="alert alert-danger">
 
@@ -39,8 +48,8 @@
                                      </span>
 
                             </p>
-                        </div>
-                        <div class="form-group">
+                        </div> -->
+                        <!-- <div class="form-group">
                             <input type="text" class="form-control" formControlName="lastName" id="defaultRegisterFormLastName" placeholder="Last name" value="" required />
                             <p *ngIf="userForm.controls.lastName.errors&&userForm.controls.lastName.touched" class="alert alert-danger">
                                 <span *ngIf="userForm.controls.lastName.errors.required">
@@ -55,7 +64,7 @@
                                      </span>
 
                             </p>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="E-mail" id="defaultRegisterFormLastName" formControlName="email" value="" required/>
                             <p *ngIf="userForm.controls.email.errors&&userForm.controls.email.touched" class="alert alert-danger">
@@ -67,21 +76,16 @@
                                 </span>
                             </p>
                         </div>
-                        <div class="form-group">
-                            <input type="radio" id="male" name="gender" value="male" formControlName="gender">
-                            <label for="male">Male</label>
-                            <input type="radio" id="female" name="gender" value="female" formControlName="gender">
-                            <label for="female">Female</label>
+                        
 
-                            <p *ngIf="userForm.controls.gender.errors&&userForm.controls.gender.touched" class="alert alert-danger">
-                                <span *ngIf="userForm.controls.gender.errors.required">
-                                    please Choose gender
+                        <div class="form-group">
+                            <input (change)="fileChange($event)" formControlName="image" type="file" class="form-control" id="customFile" required />
+                            <p *ngIf="userForm.controls.image.errors&&userForm.controls.image.touched" class="alert alert-danger">
+                                <span *ngIf="userForm.controls.image.errors.required">
+                                    *this field is required
                                 </span>
                             </p>
                         </div>
-                        <label class="form-label" for="customFile">Choose your image...</label>
-                        <input type="file" class="form-control" id="customFile" required />
-
 
                         <div class="form-group">
                             <input type="password" class="form-control" formControlName="password" id="defaultRegisterFormPassword" placeholder="Your Password *" value="" required />
@@ -95,6 +99,21 @@
                                 </span>
                             </p>
                         </div>
+
+
+                        <div class="form-group">
+                            <input type="radio" id="male" name="gender" value="male" formControlName="gender">
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="female" formControlName="gender">
+                            <label for="female">Female</label>
+
+                            <p *ngIf="userForm.controls.gender.errors&&userForm.controls.gender.touched" class="alert alert-danger">
+                                <span *ngIf="userForm.controls.gender.errors.required">
+                                    please Choose gender
+                                </span>
+                            </p>
+                        </div>
+                        
                     </div>
                 </div>
                 <button type="button" (click)="submit();" class="btnSubmit">Submit</button>
@@ -102,22 +121,6 @@
         </div>
     </div>
 
-    <!-- <p class="h4 mb-4">Sign up</p>
-
-    <div class="form-row mb-4">
-        <div class="col">
-            <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
-        </div>
-        <div class="col">
-            <input type="text" formControlName="lastName" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
-        </div>
-        <div class="col">
-            <input type="text" formControlName="username" id="defaultRegisterFormUserName" class="form-control" placeholder="user name">
-        </div>
-        <div class="col">
-            <input type="text" formControlName="password" id="defaultRegisterFormPassword" class="form-control" placeholder="password">
-        </div>
-    </div>
 
     <input type="email" formControlName="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
     <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button> -->
