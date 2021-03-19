@@ -28,14 +28,15 @@ export class OrdersComponent implements OnInit {
     this.getProductsInCart();
   }
   getProductsInCart() {
+    this.productsArray=[];
     if(this.cart.length!=0){
       console.log(this.cart);
-      this.productsArray=[];
       this.cart.forEach(id=> {
       this.productSercice.getProductsByID(id).subscribe(res=>{
         this.response=res;
         console.log(this.response)
         this.products = this.response.products
+        
         this.totalPrice+=this.products[0].price;
         this.productsArray.push(this.products[0]);
       })
@@ -63,6 +64,14 @@ export class OrdersComponent implements OnInit {
       this.response=res
       console.log(this.response);
       this.orderService.setOrder(this.response);
+      if(localStorage.getItem("card")){
+
+        localStorage.setItem("card",JSON.stringify([]));
+      }
+       window.location.reload();
+    },error=>{
+      console.log(error);
+      
     })
   }
   
