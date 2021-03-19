@@ -15,6 +15,7 @@ export class ProductsService {
   private AddProduct:string = "http://localhost:3000/api/products/";
   private UpdateProduct:string = "http://localhost:3000/api/products/";
   private DeleteProduct:string = "http://localhost:3000/api/products/";
+  private GetProductsById:string = "http://localhost:3000/api/products/";
 
   getProducts(){
     return this.myClient.get(this.GetProducts)
@@ -75,6 +76,7 @@ export class ProductsService {
         }
       })
   }
+  productDetail
   getProductsByID(id)
   {
     return this.myClient.get(this.GetProducts,{
@@ -82,6 +84,11 @@ export class ProductsService {
           id:id
         }
       })
+  }
+
+  getProductsByID2(id)
+  {
+    return this.myClient.get(`${this.GetProductsById}/${id}`)
   }
 
   getCategories()

@@ -22,6 +22,7 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard/dashb
 import { ProductcollectionComponent } from 'src/app/components/productcollection/productcollection.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 
 const routes = [
   {path:'', component: HomeComponent },
@@ -40,6 +41,8 @@ const routes = [
   { path: 'searchresult', component: SearchresultComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
+  { path: 'products/:id', component:ProductdetailsComponent },
+
   ///Admin Components
   { path: 'editproduct', component: EditProductComponent },
   { path: 'createproduct', component: CreateProductComponent },

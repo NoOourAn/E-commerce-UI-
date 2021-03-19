@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/Services/products.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-products',
@@ -22,7 +24,8 @@ export class ProductsComponent implements OnInit,OnDestroy {
   constructor(
     private productSercice:ProductsService,
     private authService: AuthService,
-    private cartService:CartService 
+    private cartService:CartService ,
+    private route:Router
     )
     {}
 
@@ -47,6 +50,20 @@ export class ProductsComponent implements OnInit,OnDestroy {
      (err)=>{
         console.log(err)
      })
+    }
+
+Pid
+    getSpecificProductById(id){
+      let sub =  this.productSercice.getProductsByID(id)
+      .subscribe((response)=>{
+   console.log(response)
+   this.Pid=response;
+   this.productSercice.productDetail  = this.Pid;
+   this.route.navigate([`/products/${id}`]);
+      },
+      (err)=>{
+   console.log(err)
+      })
     }
   // add porduct to cart
   addTocart(id){

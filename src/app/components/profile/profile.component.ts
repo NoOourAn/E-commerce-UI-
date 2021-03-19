@@ -57,10 +57,7 @@ export class ProfileComponent implements OnInit {
     this.getOrders();
   }
  
-    editprofile(){
-      this.router.navigate(['/buynow']);
-    }
- 
+ y
 
   getMyProfile(){
     let sub =  this.JwtService.myProfile()

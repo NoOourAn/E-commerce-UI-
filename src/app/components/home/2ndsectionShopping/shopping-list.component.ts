@@ -24,6 +24,23 @@ export class ShoppingListComponent implements OnInit {
 
   constructor(private route:Router,private cartService:CartService,private productSercice:ProductsService,private authService: AuthService) { }
   
+
+  Pid
+  getSpecificProductById(id){
+    let sub =  this.productSercice.getProductsByID(id)
+    .subscribe((response)=>{
+ console.log(response)
+ this.Pid=response;
+ this.productSercice.productDetail  = this.Pid;
+ this.route.navigate([`/products/${id}`]);
+    },
+    (err)=>{
+ console.log(err)
+    })
+  }
+
+
+
   details(){
 		this.route.navigate(['/details']);
 	}
@@ -46,16 +63,16 @@ export class ShoppingListComponent implements OnInit {
    .subscribe((response)=>{
  console.log(response);
  this.products = response
- if (this.products.length<3)
+ if (this.products.products.length<3)
  {
-  for(let i=0;i<this.products.length;i++){
-    this.productsArray.push(this.products[i])
+  for(let i=0;i<this.products.products.length;i++){
+    this.productsArray.push(this.products.products[i])
   }
  }
  else
  {
   for(let i=0;i<4;i++){
-    this.productsArray.push(this.products[i])
+    this.productsArray.push(this.products.products[i])
   }
  }
 
@@ -74,16 +91,16 @@ export class ShoppingListComponent implements OnInit {
    .subscribe((response)=>{
  console.log(response);
  this.products2 = response
- if (this.products2.length<3)
+ if (this.products2.products.length<3)
  {
-  for(let i=0;i<this.products2.length;i++){
-    this.lowPriceProducts.push(this.products2[i])
+  for(let i=0;i<this.products2.products.length;i++){
+    this.lowPriceProducts.push(this.products2.products[i])
   }
  }
  else
  {
   for(let i=0;i<4;i++){
-    this.lowPriceProducts.push(this.products2[i])
+    this.lowPriceProducts.push(this.products2.products[i])
   }
  }
 

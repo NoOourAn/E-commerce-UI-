@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/Services/products.service';
+import {Router} from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+
 
 @Component({
   selector: 'app-search-bar',
@@ -9,7 +12,7 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor(private ProductsService:ProductsService) { }
+  constructor(private ProductsService:ProductsService,private route:Router,  private cartService:CartService ,) { }
 
   sub 
   prod
@@ -22,6 +25,21 @@ export class SearchBarComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+
+  Pid
+    getSpecificProductById(id){
+      let sub =  this.ProductsService.getProductsByID(id)
+      .subscribe((response)=>{
+   console.log(response)
+   this.Pid=response;
+   this.ProductsService.productDetail  = this.Pid;
+   this.route.navigate([`/products/${id}`]);
+      },
+      (err)=>{
+   console.log(err)
+      })
+    }
   
   search(myForm){
      console.log("aho biedkhol ahoooooooooooooooooooooooooooooooooooooooooooooo")
@@ -33,6 +51,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
+ this.prod = this.prod.products
  this.ProductsService.productsSearch = this.prod;
  //window.location.reload(); 
  
@@ -48,6 +67,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
+ this.prod = this.prod.products
  this.ProductsService.productsSearch  = this.prod;
  //window.location.reload(); 
  
@@ -65,6 +85,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
+ this.prod = this.prod.products
  this.ProductsService.productsSearch  = this.prod;
  //window.location.reload(); 
  
@@ -81,6 +102,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
+ this.prod = this.prod.products
  this.ProductsService.productsSearch   = this.prod;
 // window.location.reload(); 
  
@@ -97,7 +119,9 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
+ this.prod = this.prod.products
  this.ProductsService.productsSearch  = this.prod;
+ 
  //window.location.reload(); 
  
     },
@@ -113,6 +137,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
+ this.prod = this.prod.products
  this.ProductsService.productsSearch  = this.prod;
  //window.location.reload(); 
     },
@@ -126,6 +151,7 @@ export class SearchBarComponent implements OnInit {
     .subscribe((response)=>{
  console.log(response)
  this.prod=response;
+ this.prod = this.prod.products
  this.ProductsService.productsSearch  = this.prod;
 // window.location.reload(); 
     },
@@ -135,5 +161,10 @@ export class SearchBarComponent implements OnInit {
 
    }
   }
+
+
+  addTocart(id){
+   this.cartService.addTocart(id)
+ }
   }
 
