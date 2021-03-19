@@ -8,7 +8,9 @@ export class CartService {
   NumberOfItem
   card
   constructor() { 
-    localStorage.setItem("card",JSON.stringify([]));
+    if(!localStorage.getItem("card")){
+      localStorage.setItem("card",JSON.stringify([]));
+    }
 
     if(localStorage.getItem("card")){
       this.card=JSON.parse(localStorage.getItem("card"));
