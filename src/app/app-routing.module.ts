@@ -7,7 +7,6 @@ import { RegistrationComponent } from 'src/app/components/shared/header/registra
 import { SignInComponent } from 'src/app/components/shared/header/sign-in/sign-in.component';
 import {receiptComponent} from 'src/app/components/orders page/receipt/receipt.component';
 import { SearchBarComponent } from 'src/app/components/search/search-bar/search-bar.component';
-import { ShoppingListComponent } from 'src/app/components/home/2ndsectionshopping/shopping-list.component';
 import { BlogComponent } from 'src/app/components/shared/header/blog/blog.component';
 import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
 import { OrdersComponent } from 'src/app/components/orders page/orders.page.component';
@@ -39,12 +38,9 @@ const routes = [
   { path: 'buynow', component: BuyNowComponent },
   { path: 'searchresult', component: SearchresultComponent },
   { path: 'aboutus', component: AboutUsComponent },
-<<<<<<< HEAD
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'products/:id', component:ProductdetailsComponent },
 
-=======
->>>>>>> 946ffaecc80810b7a432cae48da51465190dada5
   ///Admin Components
   { path: 'editproduct', component: EditProductComponent ,canActivate: [AuthGuard,AdminGuard]},
   { path: 'createproduct', component: CreateProductComponent,canActivate: [AuthGuard,AdminGuard] },
