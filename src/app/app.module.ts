@@ -24,7 +24,6 @@ import { EditProductComponent } from 'src/app/components/dashboard/edit-product/
 import { RatingEventsComponent } from 'src/app/components/home/2ndsectionShopping/rating-events/rating-events.component';
 import { BlogComponent } from 'src/app/components/shared/header/blog/blog.component';
 import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
-import {RouterModule} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { BuyNowComponent } from 'src/app/components/home/1stsectionSlider/buy-nowBtn/buy-now.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -41,6 +40,9 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
 import { AdminService } from './Services/admin.service';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { LoginService } from './Services/login.service';
+import { OrdersService } from './Services/orders.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +81,6 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule,
     ReactiveFormsModule,
     FormsModule,
     MDBBootstrapModule,
@@ -92,6 +93,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     AuthService,
     CartService,
     AdminService,
+    LoginService,
+    OrdersService
   ],
   bootstrap: [AppComponent]
 })
