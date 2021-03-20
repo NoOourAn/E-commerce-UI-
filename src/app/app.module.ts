@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductsService } from './Services/products.service';
-import{HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { SearchBarComponent } from 'src/app/components/search/search-bar/search-bar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegistrationComponent } from 'src/app/components/shared/header/registration/registration.component';
@@ -47,28 +47,28 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     AppComponent,
     SearchBarComponent,
     ProductsComponent,
-    RegistrationComponent,
     AppComponent,
     BgReviewComponent,
     FooterComponent,
-    HeaderComponent,
     ShoppingListComponent,
     SliderBriefComponent,
     ReviewComponent,
-    SignInComponent,
     CreateProductComponent,
     ProfileComponent,
     receiptComponent,
     EditProductComponent,
     RatingEventsComponent,
     OrdersComponent,
-    BlogComponent,
     ReadMoreComponent,
     HomeComponent,
     BuyNowComponent,
-    AboutUsComponent,
     SearchresultComponent,
     OrdereditemComponent,
+    RegistrationComponent,
+    BlogComponent,
+    SignInComponent,
+    AboutUsComponent,
+    HeaderComponent,
     CartComponent,
     AdminControlsComponent,
     AdminDisplayComponent,
@@ -83,27 +83,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot([
-      {path:'', component: ShoppingListComponent },
-      { path:'register', component:RegistrationComponent },
-      { path:'login', component:SignInComponent },
-      { path:'receipt', component:receiptComponent },
-      { path:'search', component:SearchBarComponent },
-      { path: 'home', component: ShoppingListComponent},
-      { path: 'blog', component: BlogComponent },
-      { path: 'signin', component: SignInComponent },
-      { path: 'readmore', component: ReadMoreComponent },
-      { path: 'details', component: OrdersComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'editproduct', component: EditProductComponent },
-      { path: 'createproduct', component: CreateProductComponent},
-      { path: 'buynow', component: BuyNowComponent },
-      { path: 'searchresult', component: SearchresultComponent },
-      { path: 'aboutus', component: AboutUsComponent }
-    ]),
     MDBBootstrapModule.forRoot(),
     NgbModule
-  //  NgbModule
   ],
   providers: [
     ProductsService,
