@@ -8,7 +8,7 @@ import { SignInComponent } from 'src/app/components/shared/header/sign-in/sign-i
 import {receiptComponent} from 'src/app/components/orders page/receipt/receipt.component';
 import { SearchBarComponent } from 'src/app/components/search/search-bar/search-bar.component';
 import { BlogComponent } from 'src/app/components/shared/header/blog/blog.component';
-import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
+// import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
 import { OrdersComponent } from 'src/app/components/orders page/orders.page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BuyNowComponent } from 'src/app/components/home/1stsectionSlider/buy-nowBtn/buy-now.component';
@@ -32,7 +32,7 @@ const routes = [
   { path:'search', component:SearchBarComponent },
   { path: 'home', component: HomeComponent},
   { path: 'blog', component: BlogComponent },
-  { path: 'readmore', component: ReadMoreComponent },
+  // { path: 'readmore', component: ReadMoreComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},//canActivate: [AuthGuard]
   { path: 'buynow', component: BuyNowComponent },
