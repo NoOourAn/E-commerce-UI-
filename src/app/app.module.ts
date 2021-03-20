@@ -24,11 +24,11 @@ import { EditProductComponent } from 'src/app/components/dashboard/edit-product/
 import { RatingEventsComponent } from 'src/app/components/home/2ndsectionShopping/rating-events/rating-events.component';
 import { BlogComponent } from 'src/app/components/shared/header/blog/blog.component';
 import { ReadMoreComponent } from 'src/app/components/home/4thsectionreview/read-more/read-more.component';
-import {Router,RouterModule} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { BuyNowComponent } from 'src/app/components/home/1stsectionSlider/buy-nowBtn/buy-now.component';
 import { AuthService } from 'src/app/services/auth.service';
- import { JwtService } from 'src/app/services/jwt.service';
+import { JwtService } from 'src/app/services/jwt.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutUsComponent } from 'src/app/components/shared/header/about-us/about-us.component';
 import { SearchresultComponent } from 'src/app/components/search/search-bar/searchresult/searchresult.component';
@@ -41,7 +41,6 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
 import { AdminService } from './Services/admin.service';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
- //import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +82,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    MDBBootstrapModule.forRoot(),
+    MDBBootstrapModule,
+    // MDBBootstrapModule.forRoot(),
     NgbModule
   ],
   providers: [
