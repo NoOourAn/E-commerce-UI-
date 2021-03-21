@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 //import { Observable } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
-import { ProductsService } from 'src/app/Services/products.service';
-import { AuthService } from 'src/app/Services/auth.service';
+import { ProductsService } from 'src/app/services/products.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-shopping-list',

@@ -5,8 +5,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { ProductsService } from 'src/app/Services/products.service';
-import { OrdersService } from 'src/app/Services/orders.service';
+import { ProductsService } from 'src/app/services/products.service';
+import { OrdersService } from 'src/app/services/orders.service';
 
 
 
