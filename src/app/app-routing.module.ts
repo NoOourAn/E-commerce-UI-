@@ -39,6 +39,7 @@ const routes = [
   { path: 'profile', component: ProfileComponent },//canActivate: [AuthGuard]
   { path: 'blog', component: BlogComponent },
   { path: 'aboutus', component: AboutUsComponent },
+
   { path: 'products/:id', component:ProductdetailsComponent },
   { path: 'cart', component: CartComponent },
    

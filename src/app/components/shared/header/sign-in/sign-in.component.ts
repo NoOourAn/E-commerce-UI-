@@ -50,16 +50,19 @@ export class SignInComponent implements OnInit {
              localStorage.setItem('access_token', this.response.token);
             if(this.response.user.username=="admin"){
               localStorage.setItem('admin',"true");
-              this.authService.loginAsAdmin();  
+              this.authService.loginAsAdmin();
+              this.authService.login();
+              this.route.navigate(['/dashboard']);  
             }else{
               if(localStorage.getItem('admin')){
                 localStorage.removeItem("admin"); 
               }
+              this.authService.login();
+             
+              this.route.navigate(['/home']);
             }
 
-           this.authService.login();
-             
-           this.route.navigate(['/home']);
+          
            window.location.reload();
             }else{
               console.log(this.response.message);
