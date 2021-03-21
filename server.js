@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 4200
+const port = 8080
 
 //set up static files
 app.use(express.static('./dist/maketo-shopping-mall')) 
