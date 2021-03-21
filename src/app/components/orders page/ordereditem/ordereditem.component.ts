@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 //import {Router} from '@angular/router';
-import { CartService } from 'src/app/services/cart.service';
-import { ProductsService } from 'src/app/services/products.service';
+import { CartService } from '../../../services/cart.service';
+import { ProductsService } from '../../../services/products.service';
 
 @Component({
   selector: 'app-ordereditem',

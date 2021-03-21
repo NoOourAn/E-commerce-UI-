@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,9 +8,7 @@ import { environment } from 'src/environments/environment';
 export class OrdersService {
 
   userOrder={};
- cartproducts =[];
-//  userOrder=new BehaviorSubject<object>({});
-//  cartproducts =new BehaviorSubject<[]>([]);  
+  cartproducts =[];
   constructor(private myClient:HttpClient) { }
 
   setOrder(value){

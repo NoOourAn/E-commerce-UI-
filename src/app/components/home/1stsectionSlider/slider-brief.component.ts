@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {Router} from '@angular/router';
 @Component({
   selector: 'app-slider-brief',

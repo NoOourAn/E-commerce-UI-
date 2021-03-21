@@ -1,10 +1,10 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminService } from 'src/app/services/admin.service';
-import { JwtService } from 'src/app/services/jwt.service';
-import { OrdersService } from 'src/app/services/orders.service';
-import { ProductsService } from 'src/app/services/products.service';
+import { AdminService } from '../../../services/admin.service';
+import { JwtService } from '../../../services/jwt.service';
+import { OrdersService } from '../../../services/orders.service';
+import { ProductsService } from '../../../services/products.service';
 
 @Component({
   selector: 'app-admin-display',

@@ -1,12 +1,9 @@
 import { Component, OnInit ,OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
-import {JwtService} from 'src/app/services/jwt.service'
+import {JwtService} from '../../services/jwt.service'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { ProductsService } from 'src/app/services/products.service';
-import { OrdersService } from 'src/app/services/orders.service';
+import { OrdersService } from '../../services/orders.service';
 
 
 

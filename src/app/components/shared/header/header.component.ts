@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { CartService } from 'src/app/services/cart.service';
-import { LoginService } from 'src/app/services/login.service';
+import { CartService } from '../../../services/cart.service';
+import { LoginService } from '../../../services/login.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
