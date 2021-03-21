@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/Services/orders.service';
+import { OrdersService } from '../../../services/orders.service';
 
 @Component({
   selector: 'app-order-page',

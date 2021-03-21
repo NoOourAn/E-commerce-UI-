@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { JwtService } from 'src/app/Services/jwt.service';
-import { AuthService } from 'src/app/Services/auth.service';
+import { JwtService } from '../../../../services/jwt.service';
+import { AuthService } from '../../../../services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({

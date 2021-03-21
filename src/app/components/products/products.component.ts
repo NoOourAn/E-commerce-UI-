@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/Services/auth.service';
-import { CartService } from 'src/app/services/cart.service';
-import { ProductsService } from 'src/app/Services/products.service';
+import { AuthService } from '../../services/auth.service';
+import { CartService } from '../../services/cart.service';
+import { ProductsService } from '../../services/products.service';
 import {Router} from '@angular/router';
 
 

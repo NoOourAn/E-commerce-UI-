@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class OrdersService {
 
   userOrder={};
- cartproducts =[];
-//  userOrder=new BehaviorSubject<object>({});
-//  cartproducts =new BehaviorSubject<[]>([]);  
+  cartproducts =[];
   constructor(private myClient:HttpClient) { }
 
   setOrder(value){
@@ -57,7 +55,7 @@ export class OrdersService {
        'access_token':localStorage.getItem('access_token')
      })
    }
-   return this.myClient.get(`http://localhost:3000/api/orders/`,httpOption);
+   return this.myClient.get(`${environment.api}/api/orders/`,httpOption);
  }
 
 
@@ -68,7 +66,7 @@ export class OrdersService {
        'access_token':localStorage.getItem('access_token')
      })
    }
-   return this.myClient.post(`http://localhost:3000/api/orders/`,newProduct,httpOption);
+   return this.myClient.post(`${environment.api}/api/orders/`,newProduct,httpOption);
  }
 
  // admin can modify order status
@@ -80,7 +78,7 @@ export class OrdersService {
      }),
      
    }
-   return this.myClient.patch(`http://localhost:3000/api/orders/${id}`,{"status":status},httpOption);
+   return this.myClient.patch(`${environment.api}/api/orders/${id}`,{"status":status},httpOption);
  }
  // user can delete order if it is pending
  deleteOrder(id){
@@ -91,6 +89,6 @@ export class OrdersService {
      }),
      
    }
-   return this.myClient.delete(`http://localhost:3000/api/orders/${id}`,httpOption);
+   return this.myClient.delete(`${environment.api}/api/orders/${id}`,httpOption);
  }
 }

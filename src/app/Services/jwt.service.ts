@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
 providedIn: 'root'
@@ -13,7 +14,7 @@ export class JwtService {
       console.log(user.username,user.password);
       let username=user.username;
       let password=user.password;
-      return this.httpClient.post('http://localhost:3000/api/users/login', {username,password});
+      return this.httpClient.post(`${environment.api}/api/users/login`, {username,password});
  
   }
    user
@@ -28,27 +29,27 @@ export class JwtService {
     formData.append('password',user.password);
     formData.append('gender',user.gender);
 
-    return this.httpClient.post('http://localhost:3000/api/users/reg', formData)
+    return this.httpClient.post(`${environment.api}/api/users/reg`, formData)
   }
 
   AllUsers(){
-    return  this.httpClient.get(`http://localhost:3000/api/users/getUsers`)
+    return  this.httpClient.get(`${environment.api}/api/users/getUsers`)
   }
   myProfile(){
     let headers = new HttpHeaders();
     headers = headers.set('access_token', localStorage.getItem("access_token"))
-    return  this.httpClient.get(`http://localhost:3000/api/users/myProfile`,{headers:headers})
+    return  this.httpClient.get(`${environment.api}/api/users/myProfile`,{headers:headers})
   }
    updateUser(user){
     let headers = new HttpHeaders();
     headers = headers.set('access_token', localStorage.getItem("access_token"))
-    return  this.httpClient.patch(`http://localhost:3000/api/users/profileUpdate`,user,{headers:headers})
+    return  this.httpClient.patch(`${environment.api}/api/users/profileUpdate`,user,{headers:headers})
   }
   
   deleteUser(){
     let headers = new HttpHeaders();
     headers = headers.set('access_token', localStorage.getItem("access_token"))
-    return  this.httpClient.delete(`http://localhost:3000/api/users/profileDelete`,{headers:headers})
+    return  this.httpClient.delete(`${environment.api}/api/users/profileDelete`,{headers:headers})
   }
 
 

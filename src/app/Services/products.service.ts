@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,13 +10,13 @@ export class ProductsService {
 
   constructor(private myClient:HttpClient) { }
 
-  private GetProducts:string = "http://localhost:3000/api/products/";
-  private GetCategories:string = "http://localhost:3000/api/products/getCategory";
-  private GetBrand:string = "http://localhost:3000/api/products/getBrand";
-  private AddProduct:string = "http://localhost:3000/api/products/";
-  private UpdateProduct:string = "http://localhost:3000/api/products/";
-  private DeleteProduct:string = "http://localhost:3000/api/products/";
-  private GetProductsById:string = "http://localhost:3000/api/products/";
+  private GetProducts:string = `${environment.api}/api/products/`;
+  private GetCategories:string = `${environment.api}/api/products/getCategory`;
+  private GetBrand:string = `${environment.api}/api/products/getBrand`;
+  private AddProduct:string = `${environment.api}/api/products/`;
+  private UpdateProduct:string = `${environment.api}/api/products/`;
+  private DeleteProduct:string = `${environment.api}/api/products/`;
+  private GetProductsById:string = `${environment.api}/api/products/`;
 
   getProducts(){
     return this.myClient.get(this.GetProducts)

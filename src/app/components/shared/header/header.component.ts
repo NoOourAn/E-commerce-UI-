@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { CartService } from 'src/app/services/cart.service';
-import { LoginService } from 'src/app/services/login.service';
-import { JwtService } from 'src/app/services/jwt.service';
+
+import { CartService } from '../../../services/cart.service';
+import { LoginService } from '../../../services/login.service';
+import { JwtService } from '../../../services/jwt.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -62,3 +64,4 @@ export class HeaderComponent implements OnInit {
     }
 
 }
+

@@ -11,7 +11,7 @@ export class BlogComponent implements OnInit {
   constructor(private route:Router){} 
   
   	search(){
-		this.route.navigate(['/blog']); // navigate to other page
+		this.route.navigate(['blog']); // navigate to other page
 	}
 
   ngOnInit(): void {
