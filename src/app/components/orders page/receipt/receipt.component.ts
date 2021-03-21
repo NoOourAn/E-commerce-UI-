@@ -14,16 +14,14 @@ export class receiptComponent implements OnInit {
   constructor(private orderService:OrdersService) { }
 
   ngOnInit(): void {
-    // console.log(this.orderService.getCart());
-    // console.log(this.orderService.getOrder());
-    // this.orderService.getCart().subscribe(res=>{
-    //     this.response=res;
-    //   this.cart=this.response
-    // })
-    // this.orderService.getOrder().subscribe(res=>{
-    //   this.response=res;
-    // this.order=this.response
-  // })
+
+    this.cart=this.orderService.getCart()
+    this.order=this.orderService.getOrder()
+    console.log(this.cart)
+    console.log(this.order)
+   
+  console.log(this.cart);
+  console.log(this.order)
 
   }
 

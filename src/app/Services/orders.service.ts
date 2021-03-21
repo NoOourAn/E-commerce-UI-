@@ -7,29 +7,49 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class OrdersService {
 
- userOrder=new BehaviorSubject<object>({});
- cartproducts =new BehaviorSubject<Array<object>>([]);  
+  userOrder={};
+ cartproducts =[];
+//  userOrder=new BehaviorSubject<object>({});
+//  cartproducts =new BehaviorSubject<[]>([]);  
   constructor(private myClient:HttpClient) { }
 
   setOrder(value){
-
+    console.log("set order",value);
     this.userOrder=value
-    console.log(value);
-    console.log("set user order",this.userOrder);
+    
   }
    getOrder(){
-     console.log("get user order",this.userOrder);
-    // return this.userOrder.asObservable();
+    
+    return this.userOrder
   }
    setCart(value){
-
+      console.log("set cart",value);
     this.cartproducts=value
-    console.log("set cart",this.cartproducts);
+    
   }
   public getCart(){
-    console.log("get cart",this.cartproducts);
-    // return this.cartproducts.asObservable;
+   
+     return this.cartproducts;
   }
+
+  // setOrder(value){
+  //   console.log("set order",value);
+  //   this.userOrder.next(value);
+    
+  // }
+  //  getOrder(){
+    
+  //   return this.userOrder.asObservable();
+  // }
+  //  setCart(value){
+  //     console.log("set cart",value);
+  //   this.cartproducts.next(value);
+    
+  // }
+  // public getCart(){
+   
+  //    return this.cartproducts.asObservable();
+  // }
   // user can get all orders
   getOrders(){
    const httpOption={
