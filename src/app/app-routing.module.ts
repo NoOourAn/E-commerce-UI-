@@ -45,6 +45,7 @@ const routes = [
   { path: 'buynow', component: BuyNowComponent },
   { path: 'searchresult', component: SearchresultComponent },
   { path: 'aboutus', component: AboutUsComponent },
+
   { path: 'products/:id', component:ProductdetailsComponent },
   { path: 'orders', component: CartComponent }, 
 
